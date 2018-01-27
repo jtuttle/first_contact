@@ -1,10 +1,14 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
+
+import StoryEngine from '../story/StoryEngine'
+
 import Monitor from '../sprites/Monitor'
+import Soylent from '../sprites/Soylent'
+
 import Choice from '../model/Choice'
 import Terminal from '../model/Terminal'
 import Monologue from '../model/Monologue'
-import StoryEngine from '../story/StoryEngine'
 
 export default class extends Phaser.State {
   init () {}
@@ -21,7 +25,16 @@ export default class extends Phaser.State {
     this.monitor.scale.x = 0.5
     this.monitor.scale.y = 0.5
     this.game.add.existing(this.monitor)
-
+    
+    this.soylent = new Soylent({
+      game: this.game,
+      x: 100,
+      y: this.world.height - 100,
+      asset: 'soylent'
+    })
+    this.soylent.scale.x = 0.3
+    this.soylent.scale.y = 0.3
+    this.game.add.existing(this.soylent)
 
     
     this.storyEngine = new StoryEngine({
