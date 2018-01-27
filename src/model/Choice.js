@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import AdvancingText from './AdvancingText'
 
 export default class extends Phaser.Group {
   constructor({ game, prompt, choices, onClick }) {
@@ -6,7 +7,6 @@ export default class extends Phaser.Group {
 
     this.lines = [ prompt ].concat(choices)
     this.lineIndex = -1
-    this.textIndex = 0
 
     this.texts = []
     this.currentText = null
@@ -17,7 +17,7 @@ export default class extends Phaser.Group {
   update() {
     if(this.lineIndex >= this.lines.length) { return }
     
-    if(this.currentText == null || this.textIndex >= this.lines[this.lineIndex].length) {
+    if(this.currentText == null || this.currentText.done()) {
       this.lineIndex += 1
       this.textIndex = 0
 
@@ -25,24 +25,23 @@ export default class extends Phaser.Group {
         var y = this.lineIndex * 50
         var initialText = (this.lineIndex > 0) ? "- " : ""
 
-        this.currentText = this.game.add.text(0, y, initialText, {
-          font: '40px Arial',
-          fill: '#77BFA3',
-          smoothed: false
-        }, this)
+        this.currentText = new AdvancingText({
+          game: this.game,
+          group: this,
+          line: initialText + this.lines[this.lineIndex],
+          y: y
+        })
         this.texts.push(this.currentText)
 
         if(this.lineIndex > 0) {
-          this.currentText.inputEnabled = true
-          this.currentText.events.onInputDown.addOnce(
+          this.currentText.text.inputEnabled = true
+          this.currentText.text.events.onInputDown.addOnce(
             this.onClick, this, 0, { lineIndex: this.lineIndex }
           )
         }
       }
     } else {
-      var line = this.lines[this.lineIndex]
-      this.currentText.text = this.currentText.text.concat(line[this.textIndex])
-      this.textIndex += 1
+      this.currentText.next()
     }
   }
 }

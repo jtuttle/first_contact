@@ -3,14 +3,13 @@ import Phaser from 'phaser'
 //import Mushroom from '../sprites/Mushroom'
 import Choice from '../model/Choice'
 import Terminal from '../model/Terminal'
-import AdvancingText from '../model/AdvancingText'
 
 export default class extends Phaser.State {
   init () {}
   preload () {}
 
   create () {
-
+/*
     this.terminal = new Terminal({
       game: this,
       lines: [
@@ -26,8 +25,8 @@ export default class extends Phaser.State {
     this.terminal.centerY = 100
 
     this.game.add.existing(this.terminal)
-    
-    /*
+    */
+
     this.choice = new Choice({
       game: this.game,
       prompt: "Can you hear me?",
@@ -42,7 +41,7 @@ export default class extends Phaser.State {
     this.choice.centerY = 100
 
     this.game.add.existing(this.choice)
-    */
+
     
 /*
     const bannerText = 'Asking you a question...?'
