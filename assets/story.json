@@ -23,11 +23,32 @@
     "type": "choice",
     "id": "choice_1",
     "prereqs": [],
-    "prompt": "Do you vant a banana?",
+    "prompt": "IS THERE ANYBODY OUT THERE?",
     "choices": [
-      "Sorry. All the scientists are gone. Place’s getting closed down.",
-      "Mmhmm!",
-      "NO"
+      "Hi?",
+      "Who's Asking?"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "print_1",
+    "prereqs": ["choice_1"],
+    "lines": [
+      "I’M NOBODY! WHO ARE YOU?",
+      "ARE YOU — NOBODY — TOO?",
+      "THEN THERE’S A PAIR OF US!"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "choice_2",
+    "prereqs": ["print_1"],
+    "prompt": "DON’T TELL! THEY’D BANISH US — YOU KNOW!",
+    "choices": [
+      "Is this a bot?",
+      "Is this a prank?"
     ]
   }
 ]

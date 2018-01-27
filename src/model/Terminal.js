@@ -22,6 +22,8 @@ export default class extends Phaser.Group {
     }
 
     this.charBuffer = []
+
+    this.onBufferEmptySignal = new Phaser.Signal()
   }
 
   update() {
@@ -37,6 +39,10 @@ export default class extends Phaser.Group {
         if(lastLine.text.length == this.lineCharWidth) {
           this.shiftLines()
         }
+      }
+
+      if(this.charBuffer.length == 0) {
+        this.onBufferEmptySignal.dispatch()
       }
     }
   }
