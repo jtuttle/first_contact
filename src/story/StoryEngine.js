@@ -9,8 +9,7 @@ export default class {
     this.storyJson = storyJson
 
     this.nodes = []
-    this.completed = {}
-    this.enabled = []
+    this.completed = {} // for fast lookup when checking prereqs
   }
 
   loadStory() {
@@ -23,36 +22,27 @@ export default class {
 
   enableNodes() {
     this.getNewEnabled().forEach(function(node) {
-      this.enabled.push(node)
       node.onEnable()
       node.onCompleteSignal.add(this.onNodeComplete, this)
     }, this)
   }
 
   onNodeComplete(node) {
-    this.enabled.splice(this.enabled.indexOf(node), 1)
     this.completed[node.id] = true
 
     this.enableNodes()
-    
-    /*
-    console.log("enabled")
-    console.log(this.enabled)
-    console.log("completed")
-    console.log(this.completed)
-    */
   }
 
   getNewEnabled() {
-    var enabled = []
-    
+    var newEnabled = []
+
     this.nodes.forEach(function(node) {
-      if(!(node.id in this.completed) && !(node in this.enabled) && this.nodeCanEnable(node)) {
-        enabled.push(node)
+      if(!(node.id in this.completed) && !node.enabled && this.nodeCanEnable(node)) {
+        newEnabled.push(node)
       }
     }, this)
 
-    return enabled
+    return newEnabled
   }
 
   nodeCanEnable(node) {

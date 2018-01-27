@@ -13,7 +13,7 @@ export default class extends Phaser.Group {
       var y = i * 23
       
       var line = game.add.text(0, y, '', {
-        font: '20px Arial',
+        font: '20px Courier New',
         fill: '#77BFA3',
         smoothed: false
       }, this)

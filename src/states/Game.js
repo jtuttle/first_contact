@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 
 import StoryEngine from '../story/StoryEngine'
 
-import Monitor from '../sprites/Monitor'
+import Background from '../sprites/Background'
 import Soylent from '../sprites/Soylent'
 
 import Choice from '../model/Choice'
@@ -15,17 +15,16 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
-    this.monitor = new Monitor({
+    this.background = new Background({
       game: this.game,
       x: this.world.centerX,
       y: this.world.centerY,
-      asset: 'monitor'
+      asset: 'background'
     })
 
-    this.monitor.scale.x = 0.5
-    this.monitor.scale.y = 0.5
-    this.game.add.existing(this.monitor)
-    
+    this.background.scale.x = 0.43
+    this.background.scale.y = 0.43
+    this.game.add.existing(this.background)
 
     this.soylent = new Soylent({
       game: this.game,
@@ -40,12 +39,12 @@ export default class extends Phaser.State {
 
     this.terminal = new Terminal({
       game: this,
-      lineCount: 10,
-      lineCharWidth: 28,
+      lineCount: 12,
+      lineCharWidth: 30,
     })
 
-    this.terminal.x = 130
-    this.terminal.y = 80
+    this.terminal.x = 250
+    this.terminal.y = 100
 
     this.game.add.existing(this.terminal)
 
