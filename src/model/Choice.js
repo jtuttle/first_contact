@@ -12,13 +12,6 @@ export default class extends Phaser.Group {
     this.currentText = null
 
     this.onClick = onClick
-    /*
-    this.currentText = game.add.text(game.world.centerX, 80, '', {
-      font: '40px Arial',
-      fill: '#77BFA3',
-      smoothed: false
-    })
-    */
   }
 
   update() {
