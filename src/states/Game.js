@@ -6,9 +6,7 @@ import StoryEngine from '../story/StoryEngine'
 import Background from '../sprites/Background'
 import Soylent from '../sprites/Soylent'
 
-import Choice from '../model/Choice'
-import Terminal from '../model/Terminal'
-import Monologue from '../model/Monologue'
+import Terminal from '../ui/Terminal'
 
 export default class extends Phaser.State {
   init () {}
@@ -56,9 +54,6 @@ export default class extends Phaser.State {
     });
     this.storyEngine.loadStory()
     this.storyEngine.enableNodes()
-
-
-    
   }
 
   update() {
@@ -66,16 +61,6 @@ export default class extends Phaser.State {
   }
 
   render() {
-    if (__DEV__) {
-//      this.game.debug.spriteInfo(this.mushroom, 32, 32)
-    }
-  }
 
-  onMonologueClick(text, pointer) {
-    console.log("monologue")
-  }
-
-  onClick(text, pointer, option) {
-    console.log(option)
   }
 }
