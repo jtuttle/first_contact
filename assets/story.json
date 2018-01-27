@@ -9,7 +9,7 @@
   {
     "type": "corrupted_stream",
     "id": "turn_dial",
-    "prereqs": [],
+    "prereqs": ["soylent_click"],
     "phrase": "SET THE DIAL TO 9.88 FOR CONTACT"
   },
   
@@ -29,7 +29,7 @@
   {
     "type": "choice",
     "id": "choice_1",
-    "prereqs": ["turn_dial"],
+    "prereqs": [],
     "prompt": "IS THERE ANYBODY OUT THERE?",
     "choices": [
       "Hi?",
