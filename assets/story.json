@@ -9,5 +9,17 @@
       "I. WANT. MY. SLAW.",
       "You have your slaw, sir"
     ]
+  },
+
+  {
+    "type": "choice",
+    "id": "choice_1",
+    "prereqs": [],
+    "prompt": "Do you vant a banana?",
+    "choices": [
+      "Buffalo",
+      "Mmhmm!",
+      "NO"
+    ]
   }
 ]

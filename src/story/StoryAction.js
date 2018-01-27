@@ -1,14 +1,23 @@
+import Phaser from 'phaser'
+
 export default class {
-  constructor(data) {
+  constructor(game, data) {
+    this.game = game
     this.data = data
+
+    this.id = data.id
     this.prereqs = data.prereqs
+
+    this.onCompleteSignal = new Phaser.Signal()
   }
 
   onEnable() {
-    console.log("enable")
+    console.log("enabled " + this.id)
   }
 
   onComplete() {
+    console.log("completed " + this.id)
 
+    this.onCompleteSignal.dispatch(this)    
   }
 }
