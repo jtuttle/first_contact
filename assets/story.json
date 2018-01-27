@@ -18,14 +18,7 @@
       "Do they actually like it?"
     ]
   },
-  
-  {
-    "type": "zoom",
-    "id": "soylent",
-    "prereqs": [],
-    "target": "soylent"
-  },
-  
+    
   {
     "type": "choice",
     "id": "choice_1",
