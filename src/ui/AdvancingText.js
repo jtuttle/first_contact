@@ -9,6 +9,7 @@ export default class extends Phaser.Group {
       fill: '#77BFA3',
       smoothed: false
     }, this)
+    this.text.lineSpacing = -5
 
     this.line = line
     this.textIndex = 0

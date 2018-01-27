@@ -26,6 +26,7 @@ export default class extends Phaser.State {
     this.monitor.scale.y = 0.5
     this.game.add.existing(this.monitor)
     
+
     this.soylent = new Soylent({
       game: this.game,
       x: 100,
@@ -36,14 +37,29 @@ export default class extends Phaser.State {
     this.soylent.scale.y = 0.3
     this.game.add.existing(this.soylent)
 
-    
+/*    
     this.storyEngine = new StoryEngine({
       game: this.game,
       storyJson: game.cache.getJSON('story')
     });
     this.storyEngine.loadStory()
     this.storyEngine.enableNodes()
+*/
 
+
+    
+    
+
+    this.terminal = new Terminal({
+      game: this,
+      lineCount: 10,
+      lineCharWidth: 28,
+    })
+
+    this.terminal.x = 130
+    this.terminal.y = 80
+
+    this.game.add.existing(this.terminal)
 
     
     
@@ -89,7 +105,11 @@ export default class extends Phaser.State {
 */
   }
 
-  render () {
+  update() {
+
+  }
+
+  render() {
     if (__DEV__) {
 //      this.game.debug.spriteInfo(this.mushroom, 32, 32)
     }
