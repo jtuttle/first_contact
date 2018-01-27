@@ -40,7 +40,7 @@ export default class extends Phaser.State {
     this.terminal = new Terminal({
       game: this,
       lineCount: 12,
-      lineCharWidth: 30,
+      lineCharWidth: 50,
     })
 
     this.terminal.x = 250

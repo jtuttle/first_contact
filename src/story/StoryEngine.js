@@ -1,6 +1,7 @@
 import ChoiceAction from './ChoiceAction'
 import ClickAction from './ClickAction'
 import DialogueAction from './DialogueAction'
+import PrintAction from './PrintAction'
 import ZoomAction from './ZoomAction'
 
 export default class {
@@ -23,7 +24,7 @@ export default class {
   enableNodes() {
     this.getNewEnabled().forEach(function(node) {
       node.onEnable()
-      node.onCompleteSignal.add(this.onNodeComplete, this)
+      node.onCompleteSignal.addOnce(this.onNodeComplete, this)
     }, this)
   }
 
@@ -67,6 +68,9 @@ export default class {
       break;
     case "dialogue":
       return DialogueAction
+      break;
+    case "print":
+      return PrintAction
       break;
     case "zoom":
       return ZoomAction
