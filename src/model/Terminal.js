@@ -1,17 +1,15 @@
 import Phaser from 'phaser'
 
 export default class extends Phaser.Group {
-  constructor({ game, prompt, choices, onClick }) {
+  constructor({ game, lines }) {
     super(game)
 
-    this.lines = [ prompt ].concat(choices)
+    this.lines = lines
     this.lineIndex = -1
     this.textIndex = 0
 
     this.texts = []
     this.currentText = null
-
-    this.onClick = onClick
   }
 
   update() {
@@ -23,21 +21,13 @@ export default class extends Phaser.Group {
 
       if(this.lineIndex < this.lines.length) {
         var y = this.lineIndex * 50
-        var initialText = (this.lineIndex > 0) ? "- " : ""
 
-        this.currentText = this.game.add.text(0, y, initialText, {
+        this.currentText = this.game.add.text(0, y, "", {
           font: '40px Arial',
           fill: '#77BFA3',
           smoothed: false
         }, this)
         this.texts.push(this.currentText)
-
-        if(this.lineIndex > 0) {
-          this.currentText.inputEnabled = true
-          this.currentText.events.onInputDown.addOnce(
-            this.onClick, this, 0, { lineIndex: this.lineIndex }
-          )
-        }
       }
     } else {
       var line = this.lines[this.lineIndex]
