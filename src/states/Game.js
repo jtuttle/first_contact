@@ -37,18 +37,6 @@ export default class extends Phaser.State {
     this.soylent.scale.y = 0.3
     this.game.add.existing(this.soylent)
 
-/*    
-    this.storyEngine = new StoryEngine({
-      game: this.game,
-      storyJson: game.cache.getJSON('story')
-    });
-    this.storyEngine.loadStory()
-    this.storyEngine.enableNodes()
-*/
-
-
-    
-    
 
     this.terminal = new Terminal({
       game: this,
@@ -60,6 +48,20 @@ export default class extends Phaser.State {
     this.terminal.y = 80
 
     this.game.add.existing(this.terminal)
+
+    
+
+    this.storyEngine = new StoryEngine({
+      game: this.game,
+      storyJson: game.cache.getJSON('story')
+    });
+    this.storyEngine.loadStory()
+    this.storyEngine.enableNodes()
+
+
+
+    
+
 
     
     

@@ -29,10 +29,14 @@ export default class extends Phaser.Group {
       var lastLine = this.lastLine()
       var nextChar = this.charBuffer.shift()
 
-      lastLine.text = lastLine.text + nextChar
-
-      if(lastLine.text.length == this.lineCharWidth) {
+      if(nextChar == "\n") {
         this.shiftLines()
+      } else {
+        lastLine.text = lastLine.text + nextChar
+
+        if(lastLine.text.length == this.lineCharWidth) {
+          this.shiftLines()
+        }
       }
     }
   }

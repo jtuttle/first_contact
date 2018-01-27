@@ -23,15 +23,7 @@ export default class extends Phaser.Group {
     this.text.text = line
     this.text.updateText()
     this.text.x = -this.text.width * 0.5
-    this.text.text = ''
-    /*
-    
-    
-
-    
-    */
-
-    
+    this.text.text = ''    
 
     this.text.text = ""
     this.line = line
