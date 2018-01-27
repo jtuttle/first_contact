@@ -15,6 +15,8 @@ export default class extends StoryAction {
 
     this.terminal.onBufferEmptySignal.addOnce(this.onTerminalComplete, this)
 
+    this.terminal.addText("\n")
+    
     this.lines.forEach(function(line) {
       this.terminal.addText(line + "\n")
     }, this)

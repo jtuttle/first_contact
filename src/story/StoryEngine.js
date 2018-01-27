@@ -1,5 +1,6 @@
 import ChoiceAction from './ChoiceAction'
 import ClickAction from './ClickAction'
+import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
 import PrintAction from './PrintAction'
 import ZoomAction from './ZoomAction'
@@ -65,6 +66,9 @@ export default class {
       break;
     case "click":
       return ClickAction
+      break;
+    case "corrupted_stream":
+      return CorruptedStreamAction
       break;
     case "dialogue":
       return DialogueAction
