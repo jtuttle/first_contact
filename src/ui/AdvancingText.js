@@ -1,14 +1,14 @@
 import Phaser from 'phaser'
 
 export default class extends Phaser.Group {
-  constructor({ game, line, x = 0, y = 0 }) {
+  constructor({ game, line, y = 0 }) {
     super(game)
 
-    this.text = game.add.text(x, y, "", {
+    this.text = game.add.text(0, y, '', {
       font: '40px Arial',
       fill: '#77BFA3',
       smoothed: false
-    })
+    }, this)
 
     this.line = line
     this.textIndex = 0
@@ -19,6 +19,19 @@ export default class extends Phaser.Group {
   }
 
   setText(line) {
+    this.text.text = line
+    this.text.updateText()
+    this.text.x = -this.text.width * 0.5
+    this.text.text = ''
+    /*
+    
+    
+
+    
+    */
+
+    
+
     this.text.text = ""
     this.line = line
     this.textIndex = 0

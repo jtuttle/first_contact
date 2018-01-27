@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import AdvancingText from '../model/AdvancingText'
+import AdvancingText from '../ui/AdvancingText'
 
 export default class extends Phaser.Group {
   constructor({ game, onClick, onClickContext }) {
@@ -14,12 +14,13 @@ export default class extends Phaser.Group {
     this.modal.events.onInputDown.add(
       onClick, onClickContext, 0
     )
+    this.add(this.modal)
 
     this.text = new AdvancingText({
       game: game,
-      x: 10,
       y: game.world.height - 50
     })
+    this.text.x = game.world.width * 0.5
   }
 
   destroy() {

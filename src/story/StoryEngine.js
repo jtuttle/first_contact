@@ -20,7 +20,7 @@ export default class {
   }
 
   enableNodes() {
-    this.getEnabled().forEach(function(node) {
+    this.getNewEnabled().forEach(function(node) {
       this.enabled.push(node)
       node.onEnable()
       node.onCompleteSignal.add(this.onNodeComplete, this)
@@ -28,14 +28,24 @@ export default class {
   }
 
   onNodeComplete(node) {
-    console.log("COMPLETE!")
+    this.enabled.splice(this.enabled.indexOf(node), 1)
+    this.completed[node.id] = true
+
+    this.enableNodes()
+    
+    /*
+    console.log("enabled")
+    console.log(this.enabled)
+    console.log("completed")
+    console.log(this.completed)
+    */
   }
 
-  getEnabled() {
+  getNewEnabled() {
     var enabled = []
     
     this.nodes.forEach(function(node) {
-      if(!(node.id in this.completed) && this.nodeCanEnable(node)) {
+      if(!(node.id in this.completed) && !(node in this.enabled) && this.nodeCanEnable(node)) {
         enabled.push(node)
       }
     }, this)
@@ -44,12 +54,15 @@ export default class {
   }
 
   nodeCanEnable(node) {
+    var canEnable = true
+    
     node.prereqs.forEach(function(prereq) {
-      if(prereq in this.completed) {
-        return false
+      if(!(prereq in this.completed)) {
+        canEnable = false
       }
-    })
-    return true
+    }, this)
+    
+    return canEnable
   }
 
   getClass(nodeType) {
