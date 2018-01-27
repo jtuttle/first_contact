@@ -3,6 +3,7 @@ import Phaser from 'phaser'
 //import Mushroom from '../sprites/Mushroom'
 import Choice from '../model/Choice'
 import Terminal from '../model/Terminal'
+import AdvancingText from '../model/AdvancingText'
 
 export default class extends Phaser.State {
   init () {}
@@ -15,7 +16,6 @@ export default class extends Phaser.State {
       lines: [
         "line 1",
         "line 2",
-        "line 3",
         "line 3",
         "line 4",
         "line 5",
