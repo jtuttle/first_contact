@@ -1,7 +1,10 @@
 import Phaser from 'phaser'
-import Terminal from './Terminal'
+
 import TerminalIcon from '../sprites/TerminalIcon'
 import SignalIcon from '../sprites/SignalIcon'
+
+import Terminal from './Terminal'
+import SignalControl from './SignalControl'
 
 export default class extends Phaser.Group {
   constructor({ game }) {
@@ -32,8 +35,14 @@ export default class extends Phaser.Group {
     })
     this.add(this.terminal)
     this.terminal.visible = false
-
     this.terminal.onCloseSignal.add(this.onTerminalClose, this)
+
+    this.signalControl = new SignalControl({
+      game: this.game,
+    })
+    this.add(this.signalControl)
+    this.signalControl.visible = false
+    this.signalControl.onCloseSignal.add(this.onSignalClose, this)
   }
 
   hideIcons() {
@@ -57,7 +66,12 @@ export default class extends Phaser.Group {
   }
 
   onSignalOpen() {
-//    this.hideIcons()
-    console.log("signal open")
+    this.hideIcons()
+    this.signalControl.visible = true
+  }
+  
+  onSignalClose() {
+    this.showIcons()
+    this.signalControl.visible = false
   }
 }

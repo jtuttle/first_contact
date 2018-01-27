@@ -18,9 +18,6 @@ export default class extends Phaser.State {
       x: this.world.centerX,
       y: this.world.centerY
     })
-
-    this.background.scale.x = 0.43
-    this.background.scale.y = 0.43
     this.game.add.existing(this.background)
 
     this.soylent = new Soylent({
@@ -28,8 +25,6 @@ export default class extends Phaser.State {
       x: 100,
       y: this.world.height - 100
     })
-    this.soylent.scale.x = 0.3
-    this.soylent.scale.y = 0.3
     this.game.add.existing(this.soylent)
 
 

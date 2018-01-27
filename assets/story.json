@@ -29,7 +29,7 @@
   {
     "type": "choice",
     "id": "choice_1",
-    "prereqs": ["corrupted_stream"],
+    "prereqs": ["turn_dial"],
     "prompt": "IS THERE ANYBODY OUT THERE?",
     "choices": [
       "Hi?",

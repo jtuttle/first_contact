@@ -8,6 +8,7 @@ export default class extends StoryAction {
     
     var gameState = this.game.state.states[this.game.state.current]
     this.terminal = gameState.desktop.terminal
+    this.signalControl = gameState.desktop.signalControl
   }
 
   onEnable() {
@@ -16,10 +17,14 @@ export default class extends StoryAction {
     this.terminal.onBufferEmptySignal.add(this.onBufferEmpty, this)
     
     this.terminal.addText(this.corruptPhrase() + "\n")
+
+    this.signalControl.onSettingChangeSignal.add(this.onSignalChange, this)
   }
 
   onComplete() {
     this.terminal.onBufferEmptySignal.remove(this.onBufferEmpty, this)
+    
+    this.signalControl.onSettingChangeSignal.remove(this.onSignalChange, this)
 
     super.onComplete()
   }
@@ -38,5 +43,11 @@ export default class extends StoryAction {
 
   onBufferEmpty() {
     this.terminal.addText(this.corruptPhrase() + "\n")
+  }
+
+  onSignalChange(frequency) {
+    if(frequency == "99.8") {
+      this.onComplete()
+    }
   }
 }
