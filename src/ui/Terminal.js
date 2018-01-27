@@ -21,27 +21,26 @@ export default class extends Phaser.Group {
       this.lines.push(line)
     }
 
-    this.textWidth = this.getTextWidth()
+//    this.textWidth = this.getTextWidth()
 
     this.charBuffer = []
 
     this.closeBtn = new CloseBtn({
       game: game,
-      x: this.textWidth,
+//      x: this.textWidth,
+      x: 580,
       y: 0
     })
-    this.closeBtn.scale.x = 0.06
-    this.closeBtn.scale.y = 0.06
     this.add(this.closeBtn)
     this.closeBtn.inputEnabled = true
     this.closeBtn.events.onInputDown.add(this.onCloseClick, this)
-
     this.onCloseSignal = new Phaser.Signal()
+    
     this.onBufferEmptySignal = new Phaser.Signal()
   }
 
   update() {
-    if(this.charBuffer.length == 0) { return }
+    if(!this.visible || this.charBuffer.length == 0) { return }
     
     var lastLine = this.lastLine()
     var nextChar = this.charBuffer.shift()
@@ -61,6 +60,7 @@ export default class extends Phaser.Group {
     }
   }
 
+  /*
   getTextWidth() {
     var line = this.lines[0]
     line.text = Array(this.lineCharWidth).join("X")
@@ -73,6 +73,7 @@ export default class extends Phaser.Group {
 
     return width
   }
+  */
   
   addText(text) {
     this.charBuffer = this.charBuffer.concat(text.split(''))
