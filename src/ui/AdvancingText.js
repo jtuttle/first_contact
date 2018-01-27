@@ -5,7 +5,7 @@ export default class extends Phaser.Group {
     super(game)
 
     this.text = game.add.text(0, y, '', {
-      font: '40px Arial',
+      font: '20px Arial',
       fill: '#77BFA3',
       smoothed: false
     }, this)

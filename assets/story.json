@@ -1,26 +1,31 @@
 [
   {
-    "type": "dialogue",
-    "id": "dialogue_1",
+    "type": "click",
+    "id": "soylent_click",
     "prereqs": [],
-    "lines": [
-      "I WANT MY SLAW",
-      "You have your slaw, sir",
-      "I. WANT. MY. SLAW.",
-      "You have your slaw, sir"
-    ]
+    "target": "soylent"
   },
 
   {
     "type": "dialogue",
-    "id": "dialogue_2",
-    "prereqs": [ "dialogue_1" ],
+    "id": "soylent_dialogue",
+    "prereqs": ["soylent_click"],
     "lines": [
-      "Whyyyy is his head so big?",
-      "WHYYYYYYY IS HIS HEAD SO BIG?"
+      "Ah, Lentilsoy. 'Be the best you’ve ever bean.'",
+      "Pretty sure they fund the experiments here.",
+      "I’ve seen scientists chug this stuff by the box.",
+      "Guess you don’t have much time for a full dinner\nwhen you’re working ‘round the clock.",
+      "Do they actually like it?"
     ]
   },
-
+  
+  {
+    "type": "zoom",
+    "id": "soylent",
+    "prereqs": [],
+    "target": "soylent"
+  },
+  
   {
     "type": "choice",
     "id": "choice_1",
