@@ -19,4 +19,8 @@ export default class extends Phaser.Group {
     this.text.text = this.text.text.concat(this.line[this.textIndex])
     this.textIndex += 1
   }
+
+  done() {
+    return this.textIndex >= this.line.length
+  }
 }

@@ -15,7 +15,7 @@ export default class extends Phaser.Group {
   update() {
     if(this.lineIndex >= this.lines.length) { return }
     
-    if(this.currentText == null || this.currentText.textIndex >= this.lines[this.lineIndex].length) {
+    if(this.currentText == null || this.currentText.done()) {
       this.lineIndex += 1
       this.textIndex = 0
 
