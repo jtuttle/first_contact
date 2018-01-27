@@ -7,13 +7,6 @@
   },
 
   {
-    "type": "corrupted_stream",
-    "id": "turn_dial",
-    "prereqs": [],
-    "phrase": "SET THE SIGNAL TO 9.88 FOR CONTACT"
-  },
-  
-  {
     "type": "dialogue",
     "id": "soylent_dialogue",
     "prereqs": ["soylent_click"],
@@ -25,12 +18,27 @@
       "Do they actually like it?"
     ]
   },
-    
+
+  {
+    "type": "corrupted_stream",
+    "id": "turn_dial",
+    "prereqs": [],
+    "phrase": "SET THE SIGNAL TO 9.88 FOR CONTACT"
+  },
+
+  {
+    "type": "print",
+    "id": "alien_1",
+    "prereqs": ["turn_dial"],
+    "lines": [
+      "IS THERE ANYBODY OUT THERE?"
+    ]
+  },
+  
   {
     "type": "choice",
-    "id": "choice_1",
-    "prereqs": ["turn_dial"],
-    "prompt": "IS THERE ANYBODY OUT THERE?",
+    "id": "alien_1_choice",
+    "prereqs": ["alien_1"],
     "choices": [
       "Hi?",
       "Who's Asking?"
@@ -39,23 +47,183 @@
 
   {
     "type": "print",
-    "id": "print_1",
-    "prereqs": ["choice_1"],
+    "id": "alien_2",
+    "prereqs": ["alien_1_choice"],
     "lines": [
       "I’M NOBODY! WHO ARE YOU?",
       "ARE YOU — NOBODY — TOO?",
-      "THEN THERE’S A PAIR OF US!"
+      "THEN THERE’S A PAIR OF US!",
+      "DON’T TELL! THEY’D BANISH US — YOU KNOW!"
     ]
   },
   
   {
     "type": "choice",
-    "id": "choice_2",
-    "prereqs": ["print_1"],
-    "prompt": "DON’T TELL! THEY’D BANISH US — YOU KNOW!",
+    "id": "alien_2_choice",
+    "prereqs": ["alien_2"],
     "choices": [
       "Is this a bot?",
       "Is this a prank?"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_3",
+    "prereqs": ["alien_2_choice"],
+    "lines": [
+      "FRIEND·LY /ˈFREN(D)LĒ/",
+      "ADJECTIVE",
+      "1. KIND AND PLEASANT",
+      "\"THEY WERE FRIENDLY TO ME\"",
+      "SYNONYMS:",
+      "AFFABLE",
+      "AMIABLE",
+      "GENIAL",
+      "CONGENIAL",
+      "CORDIAL",
+      "WARM",
+      "AFFECTIONATE",
+      "DEMONSTRATIVE",
+      "CONVIVIAL",
+      "COMPANIONABLE",
+      "SOCIABLE"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_3_choice",
+    "prereqs": ["alien_3"],
+    "choices": [
+      "That’s a pretty long name.",
+      "Are you even reading my messages?"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_4",
+    "prereqs": ["alien_3_choice"],
+    "lines": [
+      "NO /NŌ/",
+      "DETERMINER",
+      "1. NOT ANY.",
+      "\"THERE IS NO EXCUSE\"",
+      "2. USED TO INDICATE THAT SOMETHING IS QUITE THE OPPOSITE",
+      "OF WHAT IS BEING SPECIFIED.",
+      "\"IT WAS NO EASY TASK PERSUADING THEM\"",
+      "EXCLAMATION",
+      "1. USED TO GIVE A NEGATIVE RESPONSE.",
+      "\"IS ANYTHING WRONG?\"",
+      "\"NO.\"",
+      "SYNONYMS:",
+      "ABSOLUTELY NOT",
+      "MOST CERTAINLY NOT",
+      "OF COURSE NOT",
+      "UNDER NO CIRCUMSTANCES",
+      "BY NO MEANS",
+      "NOT AT ALL",
+      "NEGATIVE",
+      "NEVER",
+      "NOT REALLY"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_4_choice",
+    "prereqs": ["alien_4"],
+    "choices": [
+      "Don’t be a smartass.",
+      "Who the hell are you?"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_5",
+    "prereqs": ["alien_4_choice"],
+    "lines": [
+      "I AM THAT I AM"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_5_choice",
+    "prereqs": ["alien_5"],
+    "choices": [
+      "This is a government computer, you know.",
+      "If you’re a hacker, you’re really bad at it."
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_6",
+    "prereqs": ["alien_5_choice"],
+    "lines": [
+      "I WANNA KNOW",
+      "CAN YOU SHOW ME",
+      "I WANNA KNOW ABOUT THESE STRANGERS LIKE ME"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_6_choice",
+    "prereqs": ["alien_6"],
+    "choices": [
+      "I’m literally just a janitor.",
+      "What do you wanna know about?"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_7",
+    "prereqs": ["alien_6_choice"],
+    "lines": [
+      "BILL NYE THE SCIENCE GUY",
+      "BILL",
+      "BILL",
+      "BILL",
+      "BILL",
+      "SCIENCE RULES"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_7_choice",
+    "prereqs": ["alien_7"],
+    "choices": [
+      "Sorry. All the scientists are gone. Place’s getting closed down.",
+      "I know the science of cleaning toilets?"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_8",
+    "prereqs": ["alien_7_choice"],
+    "lines": [
+      "I WALK A LONELY ROAD",
+      "THE ONLY ONE THAT I HAVE EVER KNOWN",
+      "DONT KNOW WHERE IT GOES",
+      "BUT ITS ONLY ME ",
+      "AND I WALK ALONE"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_8_choice",
+    "prereqs": ["alien_8"],
+    "choices": [
+      "Did you seriously hack into a federal computer just to chat?",
+      "You’re lonely? Yeah… I get that."
     ]
   }
 ]
