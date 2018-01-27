@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import AdvancingText from '../ui/AdvancingText'
+import CloseBtn from '../sprites/CloseButton'
 
 export default class extends Phaser.Group {
   constructor({ game, lineCount, lineCharWidth }) {
@@ -21,32 +21,59 @@ export default class extends Phaser.Group {
       this.lines.push(line)
     }
 
+    this.textWidth = this.getTextWidth()
+
     this.charBuffer = []
 
+    this.closeBtn = new CloseBtn({
+      game: game,
+      x: this.textWidth,
+      y: 0
+    })
+    this.closeBtn.scale.x = 0.06
+    this.closeBtn.scale.y = 0.06
+    this.add(this.closeBtn)
+    this.closeBtn.inputEnabled = true
+    this.closeBtn.events.onInputDown.add(this.onCloseClick, this)
+
+    this.onCloseSignal = new Phaser.Signal()
     this.onBufferEmptySignal = new Phaser.Signal()
   }
 
   update() {
-    if(this.charBuffer.length > 0) {
-      var lastLine = this.lastLine()
-      var nextChar = this.charBuffer.shift()
+    if(this.charBuffer.length == 0) { return }
+    
+    var lastLine = this.lastLine()
+    var nextChar = this.charBuffer.shift()
 
-      if(nextChar == "\n") {
+    if(nextChar == "\n") {
+      this.shiftLines()
+    } else {
+      lastLine.text = lastLine.text + nextChar
+
+      if(lastLine.text.length == this.lineCharWidth) {
         this.shiftLines()
-      } else {
-        lastLine.text = lastLine.text + nextChar
-
-        if(lastLine.text.length == this.lineCharWidth) {
-          this.shiftLines()
-        }
       }
+    }
 
-      if(this.charBuffer.length == 0) {
-        this.onBufferEmptySignal.dispatch()
-      }
+    if(this.charBuffer.length == 0) {
+      this.onBufferEmptySignal.dispatch()
     }
   }
 
+  getTextWidth() {
+    var line = this.lines[0]
+    line.text = Array(this.lineCharWidth).join("X")
+    line.updateText()
+    
+    var width = line.width
+    
+    line.text = ""
+    line.updateText()
+
+    return width
+  }
+  
   addText(text) {
     this.charBuffer = this.charBuffer.concat(text.split(''))
   }
@@ -60,5 +87,9 @@ export default class extends Phaser.Group {
 
   lastLine() {
     return this.lines[this.lines.length - 1]
+  }
+
+  onCloseClick() {
+    this.onCloseSignal.dispatch()
   }
 }

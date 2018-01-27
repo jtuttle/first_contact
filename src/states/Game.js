@@ -6,7 +6,7 @@ import StoryEngine from '../story/StoryEngine'
 import Background from '../sprites/Background'
 import Soylent from '../sprites/Soylent'
 
-import Terminal from '../ui/Terminal'
+import Desktop from '../ui/Desktop'
 
 export default class extends Phaser.State {
   init () {}
@@ -16,8 +16,7 @@ export default class extends Phaser.State {
     this.background = new Background({
       game: this.game,
       x: this.world.centerX,
-      y: this.world.centerY,
-      asset: 'background'
+      y: this.world.centerY
     })
 
     this.background.scale.x = 0.43
@@ -27,24 +26,20 @@ export default class extends Phaser.State {
     this.soylent = new Soylent({
       game: this.game,
       x: 100,
-      y: this.world.height - 100,
-      asset: 'soylent'
+      y: this.world.height - 100
     })
     this.soylent.scale.x = 0.3
     this.soylent.scale.y = 0.3
     this.game.add.existing(this.soylent)
 
 
-    this.terminal = new Terminal({
-      game: this,
-      lineCount: 12,
-      lineCharWidth: 50,
+    this.desktop = new Desktop({
+      game: this.game
     })
-
-    this.terminal.x = 250
-    this.terminal.y = 100
-
-    this.game.add.existing(this.terminal)
+    this.desktop.x = 250
+    this.desktop.y = 100
+    this.game.add.existing(this.desktop)
+    
 
     
 
