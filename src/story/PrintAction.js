@@ -14,12 +14,12 @@ export default class extends StoryAction {
     super.onEnable()
 
     this.terminal.onBufferEmptySignal.addOnce(this.onTerminalComplete, this)
-
-    this.terminal.addText("\n")
     
     this.lines.forEach(function(line) {
       this.terminal.addText(line + "\n")
     }, this)
+
+    this.terminal.addText("\n")
   }
 
   onTerminalComplete(terminal) {

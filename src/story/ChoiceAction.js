@@ -4,7 +4,6 @@ export default class extends StoryAction {
   constructor({ game, data }) {
     super(game, data)
 
-    this.prompt = data.prompt
     this.choices = data.choices
     
     var gameState = this.game.state.states[this.game.state.current]
@@ -18,10 +17,8 @@ export default class extends StoryAction {
 
     this.terminal.onBufferEmptySignal.addOnce(this.addClickListeners, this)
     
-    this.terminal.addText(this.prompt)
-
     this.choices.forEach(function(choice) {
-      this.terminal.addText("\n\n" + this.choiceChar + " " + choice + "")
+      this.terminal.addText(this.choiceChar + " " + choice + "\n\n")
     }, this)
 
     this.terminal.addText("\n")
