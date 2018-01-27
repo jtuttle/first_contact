@@ -23,9 +23,10 @@ export default class extends StoryAction {
 
   onComplete() {
     this.terminal.onBufferEmptySignal.remove(this.onBufferEmpty, this)
-    
     this.signalControl.onSettingChangeSignal.remove(this.onSignalChange, this)
 
+    this.terminal.addText("\n")
+    
     super.onComplete()
   }
 
@@ -38,7 +39,6 @@ export default class extends StoryAction {
     }
 
     return phrase
-
   }
 
   onBufferEmpty() {

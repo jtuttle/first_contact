@@ -14,15 +14,25 @@
       "Ah, Lentilsoy. 'Be the best you’ve ever bean.'",
       "Pretty sure they fund the experiments here.",
       "I’ve seen scientists chug this stuff by the box.",
-      "Guess you don’t have much time for a full dinner\nwhen you’re working ‘round the clock.",
+      "Guess you don’t have much time for a full dinner when you’re working ‘round the clock.",
       "Do they actually like it?"
     ]
   },
 
   {
+    "type": "password_prompt",
+    "id": "password",
+    "prereqs": [],
+    "password": "Lentilsoy",
+    "unlockers": {
+      "soylent_dialogue": "Lentilsoy"
+    }
+  },
+  
+  {
     "type": "corrupted_stream",
     "id": "turn_dial",
-    "prereqs": [],
+    "prereqs": ["password"],
     "phrase": "SET THE SIGNAL TO 9.88 FOR CONTACT"
   },
 

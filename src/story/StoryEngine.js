@@ -2,6 +2,7 @@ import ChoiceAction from './ChoiceAction'
 import ClickAction from './ClickAction'
 import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
+import PasswordPromptAction from './PasswordPromptAction'
 import PrintAction from './PrintAction'
 import ZoomAction from './ZoomAction'
 
@@ -59,6 +60,17 @@ export default class {
     return canEnable
   }
 
+  getNode(nodeId) {
+    var matchNode = undefined
+
+    this.nodes.forEach(function(node) {
+      if(node.id == nodeId)
+        matchNode = node
+    })
+    
+    return matchNode
+  }
+
   getClass(nodeType) {
     switch(nodeType) {
     case "choice":
@@ -72,6 +84,9 @@ export default class {
       break;
     case "dialogue":
       return DialogueAction
+      break;
+    case "password_prompt":
+      return PasswordPromptAction
       break;
     case "print":
       return PrintAction
