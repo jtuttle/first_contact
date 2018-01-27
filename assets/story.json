@@ -1,0 +1,13 @@
+[
+  {
+    "type": "dialogue",
+    "id": "dialogue_1",
+    "prereqs": [],
+    "lines": [
+      "I WANT MY SLAW",
+      "You have your slaw, sir",
+      "I. WANT. MY. SLAW.",
+      "You have your slaw, sir"
+    ]
+  }
+]
