@@ -1,5 +1,7 @@
-import DialogueAction from './DialogueAction'
 import ChoiceAction from './ChoiceAction'
+import ClickAction from './ClickAction'
+import DialogueAction from './DialogueAction'
+import ZoomAction from './ZoomAction'
 
 export default class {
   constructor({ game, storyJson }) {
@@ -67,11 +69,17 @@ export default class {
 
   getClass(nodeType) {
     switch(nodeType) {
+    case "choice":
+      return ChoiceAction
+      break;
+    case "click":
+      return ClickAction
+      break;
     case "dialogue":
       return DialogueAction
       break;
-    case "choice":
-      return ChoiceAction
+    case "zoom":
+      return ZoomAction
       break;
     }
   }
