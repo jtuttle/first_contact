@@ -12,6 +12,16 @@
   },
 
   {
+    "type": "dialogue",
+    "id": "dialogue_2",
+    "prereqs": [ "dialogue_1" ],
+    "lines": [
+      "Whyyyy is his head so big?",
+      "WHYYYYYYY IS HIS HEAD SO BIG?"
+    ]
+  },
+
+  {
     "type": "choice",
     "id": "choice_1",
     "prereqs": [],

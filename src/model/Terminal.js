@@ -1,5 +1,5 @@
 import Phaser from 'phaser'
-import AdvancingText from './AdvancingText'
+import AdvancingText from '../ui/AdvancingText'
 
 export default class extends Phaser.Group {
   constructor({ game, lines }) {
