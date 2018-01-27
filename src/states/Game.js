@@ -58,52 +58,7 @@ export default class extends Phaser.State {
     this.storyEngine.enableNodes()
 
 
-
     
-
-
-    
-    
-/*
-    this.monologue = new Monologue({
-      game: this,
-      line: "It's a monologue",
-      onClick: this.onMonologueClick
-    })
-*/
-/*    
-    this.terminal = new Terminal({
-      game: this,
-      lines: [
-        "line 1",
-        "line 2",
-        "line 3",
-        "line 4",
-      ]
-    })
-
-    this.terminal.centerY = 100
-
-    this.game.add.existing(this.terminal)
-*/
-
-/*
-    this.choice = new Choice({
-      game: this.game,
-      prompt: "Can you hear me?",
-      choices: [
-        "Yes",
-        "No",
-        "...maybe?"
-      ],
-      onClick: this.onClick
-    })
-
-    this.choice.centerX = 350
-    this.choice.centerY = 100
-
-    this.game.add.existing(this.choice)
-*/
   }
 
   update() {
