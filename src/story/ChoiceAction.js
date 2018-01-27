@@ -8,7 +8,7 @@ export default class extends StoryAction {
     this.choices = data.choices
     
     var gameState = this.game.state.states[this.game.state.current]
-    this.terminal = gameState.terminal
+    this.terminal = gameState.desktop.terminal
 
     this.choiceChar = '>'
   }

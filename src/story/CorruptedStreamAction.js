@@ -7,7 +7,7 @@ export default class extends StoryAction {
     this.phrase = data.phrase
     
     var gameState = this.game.state.states[this.game.state.current]
-    this.terminal = gameState.terminal
+    this.terminal = gameState.desktop.terminal
   }
 
   onEnable() {
