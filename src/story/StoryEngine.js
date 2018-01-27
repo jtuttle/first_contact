@@ -1,7 +1,9 @@
 import DialogueAction from './DialogueAction'
+import ChoiceAction from './ChoiceAction'
 
 export default class {
   constructor({ game, storyJson }) {
+    this.game = game
     this.storyJson = storyJson
 
     this.nodes = []
@@ -12,7 +14,7 @@ export default class {
   loadStory() {
     this.storyJson.forEach(function(nodeData) {
       var klass = this.getClass(nodeData.type)
-      var node = new klass({ data: nodeData })
+      var node = new klass({ game: this.game, data: nodeData })
       this.nodes.push(node)
     }, this)
   }
@@ -21,7 +23,12 @@ export default class {
     this.getEnabled().forEach(function(node) {
       this.enabled.push(node)
       node.onEnable()
+      node.onCompleteSignal.add(this.onNodeComplete, this)
     }, this)
+  }
+
+  onNodeComplete(node) {
+    console.log("COMPLETE!")
   }
 
   getEnabled() {
@@ -49,6 +56,10 @@ export default class {
     switch(nodeType) {
     case "dialogue":
       return DialogueAction
+      break;
+    case "choice":
+      return ChoiceAction
+      break;
     }
   }
 }
