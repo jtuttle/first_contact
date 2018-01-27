@@ -8,16 +8,22 @@ export default class {
     this.id = data.id
     this.prereqs = data.prereqs
 
+    this.enabled = false
+    this.completed = false
+
     this.onCompleteSignal = new Phaser.Signal()
   }
 
   onEnable() {
+    this.enabled = true
+    
     console.log("enabled " + this.id)
   }
 
   onComplete() {
     console.log("completed " + this.id)
 
-    this.onCompleteSignal.dispatch(this)    
+    this.completed = true
+    this.onCompleteSignal.dispatch(this)
   }
 }
