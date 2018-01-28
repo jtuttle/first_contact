@@ -12408,6 +12408,8 @@ var _class = function (_StoryAction) {
     value: function onUnlockerNodeComplete(node) {
       var index = Object.keys(this.unlockers).indexOf(node.id);
       this.choices[index] = this.unlockers[node.id];
+
+      this.showPrompt();
     }
   }]);
 

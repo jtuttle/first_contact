@@ -95,5 +95,7 @@ export default class extends StoryAction {
   onUnlockerNodeComplete(node) {
     var index = Object.keys(this.unlockers).indexOf(node.id)
     this.choices[index] = this.unlockers[node.id]
+
+    this.showPrompt()
   }
 }
