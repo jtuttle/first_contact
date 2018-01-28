@@ -1,4 +1,5 @@
 import ChoiceAction from './ChoiceAction'
+import ChoiceBranchPrintAction from './ChoiceBranchPrintAction'
 import ClickAction from './ClickAction'
 import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
@@ -78,6 +79,9 @@ export default class {
     switch(nodeType) {
     case "choice":
       return ChoiceAction
+      break;
+    case "choice_branch_print":
+      return ChoiceBranchPrintAction
       break;
     case "click":
       return ClickAction
