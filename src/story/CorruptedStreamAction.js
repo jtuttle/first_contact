@@ -25,7 +25,7 @@ export default class extends StoryAction {
     this.terminal.onBufferEmptySignal.remove(this.onBufferEmpty, this)
     this.signalControl.onSettingChangeSignal.remove(this.onSignalChange, this)
 
-    this.terminal.addText("\n")
+    this.terminal.clearText()
     
     super.onComplete()
   }

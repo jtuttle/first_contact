@@ -21,8 +21,9 @@ export default class extends Phaser.Group {
     }
 
     this.charBuffer = []
-    this.charDelay = 1
-    this.charDelayCount = 0
+    
+    this.charFrameDelay = 0
+    this.charFrameDelayCount = 0
     
     this.onBufferEmptySignal = new Phaser.Signal()
   }
@@ -30,12 +31,12 @@ export default class extends Phaser.Group {
   update() {
     if(!this.visible || this.charBuffer.length == 0) { return }
 
-    if(this.charDelayCount > 0) {
-      this.charDelayCount--
+    if(this.charFrameDelayCount > 0) {
+      this.charFrameDelayCount--
       return
     }
     
-    this.charDelayCount = this.charDelay
+    this.charFrameDelayCount = this.charFrameDelay
     
     var lastLine = this.lastLine()
     var nextChar = this.charBuffer.shift()
@@ -43,7 +44,7 @@ export default class extends Phaser.Group {
     if(nextChar == "\n") {
       this.shiftLines()
       
-      this.charDelayCount = 10 + (Math.random() * 10)
+      this.charFrameDelayCount += 10
     } else {
       lastLine.text = lastLine.text + nextChar
 
@@ -65,6 +66,8 @@ export default class extends Phaser.Group {
     this.lines.forEach(function(line) {
       line.text = ''
     })
+
+    this.charBuffer = []
   }
   
   shiftLines() {
@@ -76,5 +79,10 @@ export default class extends Phaser.Group {
 
   lastLine() {
     return this.lines[this.lines.length - 1]
+  }
+
+  setCharFrameDelay(value) {
+    this.charFrameDelay = value
+    this.charFrameDelayCount = value
   }
 }
