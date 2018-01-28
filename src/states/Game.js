@@ -16,6 +16,8 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
+    this.game.PLAYER_SCORE = 0
+    
     this.background = new Background({
       game: this.game,
       x: this.world.centerX,

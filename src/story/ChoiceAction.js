@@ -18,7 +18,7 @@ export default class extends StoryAction {
     this.terminal.onBufferEmptySignal.addOnce(this.addClickListeners, this)
     
     this.choices.forEach(function(choice) {
-      this.terminal.addText(this.choiceChar + " " + choice + "\n\n")
+      this.terminal.addText(this.choiceChar + " " + choice.line + "\n\n")
     }, this)
   }
 
@@ -32,28 +32,33 @@ export default class extends StoryAction {
   }
 
   addClickListeners() {
-    var currentChoice = 0
+    var currentChoice = this.choices.length
+    var lines = this.terminal.lines
 
-    this.terminal.lines.forEach(function(line) {
-      if(line.text[0] == this.choiceChar) {
-        currentChoice++
+    for(var i = lines.length - 1; i >= 0; i--) {
+      console.log(currentChoice)
+      if(currentChoice > 0) {
+        var line = lines[i]
+        
+        if(line.text != '') {
+          line.inputEnabled = true
+          line.input.useHandCursor = true;
+          line.events.onInputDown.addOnce(
+            this.onChoiceClick, this, 0, currentChoice
+          )
+        }
+
+        if(line.text[0] == this.choiceChar) {
+          currentChoice--
+        }
       }
-      
-      if(currentChoice > 0 && line.text != '') {
-        line.inputEnabled = true
-        line.input.useHandCursor = true;
-        line.events.onInputDown.addOnce(
-          this.onChoiceClick, this, 0, { choice: currentChoice }
-        )
-      }
-    }, this)
+    }
   }
 
-  onChoiceClick(choiceText, pointer, option) {
-    console.log(option)
+  onChoiceClick(choiceAction, pointer, choiceIndex) {    
+    var choice = this.choices[choiceIndex - 1]
+    this.game.PLAYER_SCORE += choice.score
 
-    // TODO: record choice somewhere
-    
     this.onComplete()
   }
 }
