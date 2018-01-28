@@ -11016,8 +11016,6 @@ var _class = function (_Phaser$State) {
       this.game.PLAYER_SCORE = 0;
       this.game.CHOICES = {};
 
-      this.game.sound.play("music", 1, true);
-
       this.background = new _Background2.default({
         game: this.game,
         x: this.world.centerX,
@@ -11165,6 +11163,10 @@ var _GoodEndingAction = __webpack_require__(/*! ./GoodEndingAction */ 353);
 
 var _GoodEndingAction2 = _interopRequireDefault(_GoodEndingAction);
 
+var _MusicToggleAction = __webpack_require__(/*! ./MusicToggleAction */ 377);
+
+var _MusicToggleAction2 = _interopRequireDefault(_MusicToggleAction);
+
 var _PasswordPromptAction = __webpack_require__(/*! ./PasswordPromptAction */ 354);
 
 var _PasswordPromptAction2 = _interopRequireDefault(_PasswordPromptAction);
@@ -11305,6 +11307,9 @@ var _class = function () {
           break;
         case "good_ending":
           return _GoodEndingAction2.default;
+          break;
+        case "music_toggle":
+          return _MusicToggleAction2.default;
           break;
         case "password_prompt":
           return _PasswordPromptAction2.default;
@@ -13674,6 +13679,71 @@ var _class = function (_Phaser$Sprite) {
 
   return _class;
 }(_phaser2.default.Sprite);
+
+exports.default = _class;
+
+/***/ }),
+/* 377 */
+/*!****************************************!*\
+  !*** ./src/story/MusicToggleAction.js ***!
+  \****************************************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _StoryAction2 = __webpack_require__(/*! ./StoryAction */ 12);
+
+var _StoryAction3 = _interopRequireDefault(_StoryAction2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_StoryAction) {
+  _inherits(_class, _StoryAction);
+
+  function _class(_ref) {
+    var game = _ref.game,
+        data = _ref.data;
+
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, data));
+
+    _this.on = data.on == "true";
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: "onEnable",
+    value: function onEnable() {
+      _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "onEnable", this).call(this);
+
+      if (this.on) {
+        this.game.MUSIC = this.game.sound.play("music", 1, true);
+      } else {
+        this.game.MUSIC.stop();
+      }
+    }
+  }]);
+
+  return _class;
+}(_StoryAction3.default);
 
 exports.default = _class;
 
