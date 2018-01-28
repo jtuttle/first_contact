@@ -2,7 +2,7 @@
   {
     "type": "dialogue",
     "id": "monologue_1",
-    "prereqs": ["goosldfjads"],
+    "prereqs": [],
     "lines": [
       "Still working, huh? Thought they pulled the plug on everything.",
       "Did they forget to turn this one off?",
@@ -93,7 +93,7 @@
   {
     "type": "password_prompt",
     "id": "password",
-    "prereqs": ["show_desktop_x"],
+    "prereqs": ["show_desktop"],
     "password": "Lentilsoy",
     "unlockers": {
       "soylent_dialogue": "Lentilsoy",
@@ -865,8 +865,8 @@
   
   {
     "type": "print",
-    "id": "alien_25",
-    "prereqs": ["alien_24_choice"],
+    "id": "alien_26",
+    "prereqs": ["alien_25_choice"],
     "lines": [
       "LISTEN TO ME",
       "IT IS NOT TOO LATE"
@@ -875,8 +875,8 @@
 
   {
     "type": "choice",
-    "id": "alien_25_choice",
-    "prereqs": ["alien_25"],
+    "id": "alien_26_choice",
+    "prereqs": ["alien_26"],
     "choices": [
       {
         "line": "Too late for what?",
@@ -891,8 +891,8 @@
 
   {
     "type": "print",
-    "id": "alien_26",
-    "prereqs": ["alien_25_choice"],
+    "id": "alien_27",
+    "prereqs": ["alien_26_choice"],
     "lines": [
 	"THE NOISE",
 	"IS YOU HUMAN",
@@ -903,8 +903,8 @@
 
   {
     "type": "choice",
-    "id": "alien_26_choice",
-    "prereqs": ["alien_26"],
+    "id": "alien_27_choice",
+    "prereqs": ["alien_27"],
     "choices": [
       {
         "line": "What did you do to me?!",
@@ -919,8 +919,8 @@
 
   {
     "type": "print",
-    "id": "alien_27",
-    "prereqs": ["alien_26_choice"],
+    "id": "alien_28",
+    "prereqs": ["alien_27_choice"],
     "lines": [
 	"NOT ME",
 	"MY KIND",
@@ -935,8 +935,8 @@
 
   {
     "type": "choice",
-    "id": "alien_27_choice",
-    "prereqs": ["alien_27"],
+    "id": "alien_28_choice",
+    "prereqs": ["alien_28"],
     "choices": [
       {
         "line": "Who the hell are you?",
@@ -951,8 +951,8 @@
 
   {
     "type": "print",
-    "id": "alien_28",
-    "prereqs": ["alien_27_choice"],
+    "id": "alien_29",
+    "prereqs": ["alien_28_choice"],
     "lines": [
       "ANOTHER",
       "DIFFERENT",
@@ -962,8 +962,8 @@
 
   {
     "type": "choice",
-    "id": "alien_28_choice",
-    "prereqs": ["alien_28"],
+    "id": "alien_29_choice",
+    "prereqs": ["alien_29"],
     "choices": [
       {
         "line": "Why me? I’m nobody.",
@@ -978,8 +978,8 @@
 
   {
     "type": "print",
-    "id": "alien_29",
-    "prereqs": ["alien_28_choice"],
+    "id": "alien_30",
+    "prereqs": ["alien_29_choice"],
     "lines": [
 	"THEY NEEDED SOMEONE",
 	"SOMEONE CLOSE",
@@ -989,8 +989,8 @@
 
   {
     "type": "choice",
-    "id": "alien_29_choice",
-    "prereqs": ["alien_29"],
+    "id": "alien_30_choice",
+    "prereqs": ["alien_30"],
     "choices": [
       {
         "line": "What’s gonna happen to me?",
@@ -1005,8 +1005,8 @@
 
   {
     "type": "print",
-    "id": "alien_30",
-    "prereqs": ["alien_29_choice"],
+    "id": "alien_31",
+    "prereqs": ["alien_30_choice"],
     "lines": [
       "CANT",
       "CANT SAVE YOU",
@@ -1017,8 +1017,8 @@
 
   {
     "type": "choice",
-    "id": "alien_30_choice",
-    "prereqs": ["alien_30"],
+    "id": "alien_31_choice",
+    "prereqs": ["alien_31"],
     "choices": [
       {
         "line": "Save my what?",
@@ -1033,9 +1033,9 @@
 
   {
     "type": "choice_branch_print",
-    "id": "alien_31",
-    "prereqs": ["alien_30_choice"],
-    "choice": "alien_30_choice",
+    "id": "alien_32",
+    "prereqs": ["alien_31_choice"],
+    "choice": "alien_31_choice",
     "lines": [
       "OTHERS IN DANGER",
       "I CANNOT"
@@ -1044,8 +1044,8 @@
 
   {
     "type": "print",
-    "id": "alien_32",
-    "prereqs": ["alien_31"],
+    "id": "alien_33",
+    "prereqs": ["alien_32"],
     "lines": [
       "YOU MUST",
       "LISTEN",
@@ -1056,8 +1056,8 @@
 
   {
     "type": "choice",
-    "id": "alien_32_choice",
-    "prereqs": ["alien_32"],
+    "id": "alien_33_choice",
+    "prereqs": ["alien_33"],
     "choices": [
       {
         "line": "I trust you.",
@@ -1073,7 +1073,7 @@
   {
     "type": "choice_score",
     "id": "good_ending_score",
-    "prereqs": ["alien_32_choice"],
+    "prereqs": ["alien_33_choice"],
     "value": 10,
     "condition": "greater_than_or_equal"
   },
@@ -1167,9 +1167,16 @@
   },
 
   {
+    "type": "wait",
+    "id": "good_wait_1",
+    "prereqs": ["good_fade"],
+    "duration": 3
+  },
+  
+  {
     "type": "dialogue",
     "id": "good_4",
-    "prereqs": ["good_fade"],
+    "prereqs": ["good_wait_1"],
     "lines": [
       "Hello?",
       "Are you alive?",
@@ -1182,9 +1189,16 @@
   },
 
   {
+    "type": "wait",
+    "id": "good_wait_2",
+    "prereqs": ["good_4"],
+    "duration": 3
+  },
+  
+  {
     "type": "show_terminal",
     "id": "good_5",
-    "prereqs": ["good_4"]
+    "prereqs": ["good_wait_2"]
   },
 
   {
@@ -1222,7 +1236,7 @@
     {
     "type": "choice",
     "id": "bad_1_choice",
-    "prereqs": [],
+    "prereqs": ["bad_1"],
     "choices": [
       {
         "line": "What can I even do?!",
@@ -1276,11 +1290,18 @@
     "id": "bad_clear",
     "prereqs": ["bad_terminal"]
   },
+
+  {
+    "type": "wait",
+    "id": "bad_wait",
+    "prereqs": ["bad_clear"],
+    "duration": 3
+  },
   
   {
     "type": "print",
     "id": "bad_3",
-    "prereqs": ["bad_clear"],
+    "prereqs": ["bad_wait"],
     "lines": [
       "AT LAST."
     ]
