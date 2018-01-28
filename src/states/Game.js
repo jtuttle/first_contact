@@ -18,6 +18,7 @@ export default class extends Phaser.State {
   create () {
     this.game.PLAYER_SCORE = 0
     this.game.CHOICES = {}
+    this.game.LOOPED_SOUNDS = {}
 
     this.background = new Background({
       game: this.game,

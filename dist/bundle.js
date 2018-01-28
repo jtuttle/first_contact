@@ -11011,6 +11011,7 @@ var _class = function (_Phaser$State) {
     value: function create() {
       this.game.PLAYER_SCORE = 0;
       this.game.CHOICES = {};
+      this.game.LOOPED_SOUNDS = {};
 
       this.background = new _Background2.default({
         game: this.game,
@@ -11159,10 +11160,6 @@ var _GoodEndingAction = __webpack_require__(/*! ./GoodEndingAction */ 353);
 
 var _GoodEndingAction2 = _interopRequireDefault(_GoodEndingAction);
 
-var _MusicToggleAction = __webpack_require__(/*! ./MusicToggleAction */ 377);
-
-var _MusicToggleAction2 = _interopRequireDefault(_MusicToggleAction);
-
 var _PasswordPromptAction = __webpack_require__(/*! ./PasswordPromptAction */ 354);
 
 var _PasswordPromptAction2 = _interopRequireDefault(_PasswordPromptAction);
@@ -11182,6 +11179,10 @@ var _ShowTerminalAction2 = _interopRequireDefault(_ShowTerminalAction);
 var _SoundAction = __webpack_require__(/*! ./SoundAction */ 375);
 
 var _SoundAction2 = _interopRequireDefault(_SoundAction);
+
+var _SoundToggleAction = __webpack_require__(/*! ./SoundToggleAction */ 378);
+
+var _SoundToggleAction2 = _interopRequireDefault(_SoundToggleAction);
 
 var _WaitAction = __webpack_require__(/*! ./WaitAction */ 358);
 
@@ -11304,9 +11305,6 @@ var _class = function () {
         case "good_ending":
           return _GoodEndingAction2.default;
           break;
-        case "music_toggle":
-          return _MusicToggleAction2.default;
-          break;
         case "password_prompt":
           return _PasswordPromptAction2.default;
           break;
@@ -11321,6 +11319,9 @@ var _class = function () {
           break;
         case "sound":
           return _SoundAction2.default;
+          break;
+        case "sound_toggle":
+          return _SoundToggleAction2.default;
           break;
         case "wait":
           return _WaitAction2.default;
@@ -13631,9 +13632,10 @@ var _class = function (_Phaser$Sprite) {
 exports.default = _class;
 
 /***/ }),
-/* 377 */
+/* 377 */,
+/* 378 */
 /*!****************************************!*\
-  !*** ./src/story/MusicToggleAction.js ***!
+  !*** ./src/story/SoundToggleAction.js ***!
   \****************************************/
 /*! dynamic exports provided */
 /*! all exports used */
@@ -13673,6 +13675,7 @@ var _class = function (_StoryAction) {
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, data));
 
+    _this.sound = data.sound;
     _this.on = data.on == "true";
     return _this;
   }
@@ -13683,9 +13686,9 @@ var _class = function (_StoryAction) {
       _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "onEnable", this).call(this);
 
       if (this.on) {
-        this.game.MUSIC = this.game.sound.play("music", 1, true);
+        this.game.LOOPED_SOUNDS[this.sound] = this.game.sound.play(this.sound, 1, true);
       } else {
-        this.game.MUSIC.stop();
+        this.game.LOOPED_SOUNDS[this.sound].stop();
       }
     }
   }]);
