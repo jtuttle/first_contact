@@ -203,7 +203,7 @@
     "prereqs": ["alien_3"],
     "choices": [
       {
-        "line": "Is that your full name?",
+        "line": "So that's your full name?",
         "score": 0
       },
       {
