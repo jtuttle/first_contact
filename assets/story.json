@@ -1494,8 +1494,15 @@
 
   { 
     "type": "sound",
-    "id": "bad_sound",
+    "id": "bad_sound_1",
     "prereqs": ["bad_wait"],
     "sfx": "bad_ending"
+  },
+  
+  { 
+    "type": "sound",
+    "id": "bad_sound_2",
+    "prereqs": ["bad_wait"],
+    "sfx": "at_last"
   }
 ]
