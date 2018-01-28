@@ -26,8 +26,6 @@ export default class extends Phaser.State {
       y: this.world.centerY
     })
     this.game.add.existing(this.background)
-
-
     
     this.soylent = new Soylent({
       game: this.game,
@@ -44,12 +42,10 @@ export default class extends Phaser.State {
     this.fishBowl.y = 260
     this.game.add.existing(this.fishBowl)
 
-
     this.fish = this.game.add.sprite(10, 280, 'fish')
     var bob = this.fish.animations.add("bob")
     this.fish.animations.play("bob", 20, true)
     this.fish.scale.setTo(0.7)
-
     
     this.telephone = new Telephone({
       game: this.game,
@@ -72,7 +68,6 @@ export default class extends Phaser.State {
     this.desktop.y = this.game.world.centerY - 10
     this.game.add.existing(this.desktop)
     this.desktop.visible = false
-
 
     this.modal = new WhiteSquare({
       game: this.game,
