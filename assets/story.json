@@ -115,7 +115,7 @@
   {
     "type": "corrupted_stream",
     "id": "turn_dial",
-    "prereqs": ["monologue_3"],
+    "prereqs": ["password"],
     "phrase": "SET THE SIGNAL TO 9.88 FOR CONTACT"
   },
 
@@ -125,7 +125,8 @@
     "prereqs": ["turn_dial"],
     "lines": [
       "IS THERE ANYBODY OUT THERE?"
-    ]
+    ],
+    "charFrameDelay": 8
   },
   
   {
@@ -220,14 +221,8 @@
       "NO /NŌ/",
       "DETERMINER",
       "1. NOT ANY.",
-      "\"THERE IS NO EXCUSE\"",
       "2. USED TO INDICATE THAT SOMETHING IS QUITE THE OPPOSITE",
       "OF WHAT IS BEING SPECIFIED.",
-      "\"IT WAS NO EASY TASK PERSUADING THEM\"",
-      "EXCLAMATION",
-      "1. USED TO GIVE A NEGATIVE RESPONSE.",
-      "\"IS ANYTHING WRONG?\"",
-      "\"NO.\"",
       "SYNONYMS:",
       "ABSOLUTELY NOT",
       "MOST CERTAINLY NOT",
@@ -857,7 +852,8 @@
     "lines": [
       "I COULD",
       "KILL THOSE YOU DISLIKE"
-    ]
+    ],
+    "charFrameDelay": 5
   },
 
   {
@@ -1414,6 +1410,7 @@
     "prereqs": ["bad_wait"],
     "lines": [
       "AT LAST."
-    ]
+    ],
+    "charFrameDelay": 10
   }
 ]

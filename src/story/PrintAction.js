@@ -13,6 +13,8 @@ export default class extends StoryAction {
   onEnable() {
     super.onEnable()
 
+    this.terminal.setCharFrameDelay(this.data.charFrameDelay || 0)
+    
     this.terminal.onBufferEmptySignal.addOnce(this.onTerminalComplete, this)
     
     this.lines.forEach(function(line) {
@@ -20,6 +22,12 @@ export default class extends StoryAction {
     }, this)
 
     this.terminal.addText("\n")
+  }
+
+  onComplete() {
+    this.terminal.setCharFrameDelay(0)
+
+    super.onComplete()
   }
 
   onTerminalComplete(terminal) {

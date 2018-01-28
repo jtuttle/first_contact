@@ -25,7 +25,7 @@ export default class extends StoryAction {
 
   onEnable() {
     super.onEnable()
-    
+
     Object.keys(this.unlockers).forEach(function(unlocker) {
       var node = this.storyEngine.getNode(unlocker)
       node.onCompleteSignal.addOnce(this.onUnlockerNodeComplete, this)
