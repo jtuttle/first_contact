@@ -20,8 +20,6 @@ export default class extends Phaser.State {
     this.game.PLAYER_SCORE = 0
     this.game.CHOICES = {}
 
-    this.game.sound.play("music", 1, true);
-    
     this.background = new Background({
       game: this.game,
       x: this.world.centerX,

@@ -1,4 +1,11 @@
-[  
+[
+  {
+    "type": "music_toggle",
+    "id": "music_on",
+    "prereqs": [],
+    "on": "true"
+  },
+  
   {
     "type": "dialogue",
     "id": "monologue_1",
@@ -39,7 +46,7 @@
     "prereqs": ["pulse_click"],
     "sfx": "beep"
   },
-
+  
   {
     "type": "dialogue",
     "id": "monologue_2",
@@ -1289,6 +1296,13 @@
   },
 
   {
+    "type": "music_toggle",
+    "id": "good_music_off",
+    "prereqs": ["good_3_choice"],
+    "on": "false"
+  },
+  
+  {
     "type": "fade",
     "id": "good_fade",
     "prereqs": ["good_3_choice"],
@@ -1405,6 +1419,13 @@
       "SOUND AND FURY",
       "SOU"
     ]
+  },
+
+  {
+    "type": "music_toggle",
+    "id": "bad_music_off",
+    "prereqs": ["bad_2"],
+    "on": "false"
   },
 
   {
