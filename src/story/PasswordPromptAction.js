@@ -66,6 +66,7 @@ export default class extends StoryAction {
         var choiceText = line.text.substring(2, line.text.length)
         
         line.inputEnabled = true
+        line.input.useHandCursor = true;
         line.events.onInputDown.addOnce(
           this.onChoiceClick, this, 0, choiceText
         )
