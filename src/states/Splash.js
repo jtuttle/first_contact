@@ -15,7 +15,10 @@ export default class extends Phaser.State {
     // load your assets
     //
     this.load.image('background', 'assets/images/background.png')
+    
     this.load.image('soylent', 'assets/images/soylent.jpg')
+    this.load.image('fish_bowl', 'assets/images/fish_bowl.jpg')
+    this.load.image('telephone', 'assets/images/telephone.jpg')
 
     this.load.image('terminal_icon', 'assets/images/terminal_icon.png')
     this.load.image('signal_icon', 'assets/images/signal_icon.png')

@@ -37,6 +37,8 @@ export default class extends Phaser.Group {
     this.onCloseSignal = new Phaser.Signal()
     
     this.onBufferEmptySignal = new Phaser.Signal()
+
+    this.closeBtn.visible = false
   }
 
   update() {
@@ -92,5 +94,9 @@ export default class extends Phaser.Group {
 
   onCloseClick() {
     this.onCloseSignal.dispatch()
+  }
+
+  unlock() {
+    this.closeBtn.visible = true
   }
 }

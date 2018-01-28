@@ -33,6 +33,8 @@ export default class extends StoryAction {
   }
 
   onComplete() {
+    this.terminal.unlock()
+    
     this.removeClickListeners()
 
     super.onComplete()
@@ -77,8 +79,6 @@ export default class extends StoryAction {
   }
 
   onChoiceClick(choiceText, pointer, password) {
-    console.log(password + " vs " + this.password)
-    
     if(password == this.password) {
       this.onComplete()
     } else {

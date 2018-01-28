@@ -34,15 +34,17 @@ export default class extends Phaser.Group {
       lineCharWidth: 50,
     })
     this.add(this.terminal)
-    this.terminal.visible = false
     this.terminal.onCloseSignal.add(this.onTerminalClose, this)
 
     this.signalControl = new SignalControl({
       game: this.game,
     })
     this.add(this.signalControl)
-    this.signalControl.visible = false
     this.signalControl.onCloseSignal.add(this.onSignalClose, this)
+
+    this.hideIcons()
+    this.signalControl.visible = false
+    this.terminal.visible = true
   }
 
   hideIcons() {
