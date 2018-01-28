@@ -1,5 +1,6 @@
 import ChoiceAction from './ChoiceAction'
 import ChoiceBranchPrintAction from './ChoiceBranchPrintAction'
+import ChoiceScoreAction from './ChoiceScoreAction'
 import ClickAction from './ClickAction'
 import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
@@ -82,6 +83,9 @@ export default class {
       break;
     case "choice_branch_print":
       return ChoiceBranchPrintAction
+      break;
+    case "choice_score":
+      return ChoiceScoreAction
       break;
     case "click":
       return ClickAction

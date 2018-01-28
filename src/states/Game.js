@@ -34,14 +34,20 @@ export default class extends Phaser.State {
       y: this.world.height - 100
     })
     this.game.add.existing(this.soylent)
-    
+
     this.fishBowl = new FishBowl({
       game: this.game,
-      x: 100,
-      y: this.world.height - 300
+      x: 0,
+      y: 0
     })
     this.game.add.existing(this.fishBowl)
 
+
+    this.fish = this.game.add.sprite(50, 250, 'fish')
+    var bob = this.fish.animations.add("bob")
+    this.fish.animations.play("bob", 20, true)
+
+    
     this.telephone = new Telephone({
       game: this.game,
       x: 900,
