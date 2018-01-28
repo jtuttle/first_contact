@@ -954,8 +954,12 @@
     ]
   },
 
-
-  
+  { 
+    "type": "sound",
+    "id": "alien_25_sound",
+    "prereqs": ["alien_25"],
+    "sfx": "corrupted_stream"
+  },
 
   {
     "type": "choice",
