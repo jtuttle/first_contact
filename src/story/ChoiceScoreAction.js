@@ -11,12 +11,11 @@ export default class extends StoryAction {
   onEnable() {
     super.onEnable()
 
-
     if(this.condition == "greater_than_or_equal") {
       if(this.game.PLAYER_SCORE >= this.value) {
         this.onComplete();
       }
-    } else if(this.condition == "bad_ending") {
+    } else if(this.condition == "less_than") {
       if(this.game.PLAYER_SCORE < this.value) {
         this.onComplete();
       }

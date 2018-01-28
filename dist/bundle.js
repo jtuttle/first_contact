@@ -11576,7 +11576,7 @@ var _class = function (_StoryAction) {
         if (this.game.PLAYER_SCORE >= this.value) {
           this.onComplete();
         }
-      } else if (this.condition == "bad_ending") {
+      } else if (this.condition == "less_than") {
         if (this.game.PLAYER_SCORE < this.value) {
           this.onComplete();
         }
