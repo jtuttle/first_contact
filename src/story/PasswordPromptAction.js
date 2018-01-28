@@ -7,8 +7,8 @@ export default class extends StoryAction {
     this.password = this.data.password
 
     this.choices = [
-      "Lentilsoy",
-//      "abc123",
+//      "Lentilsoy",
+      "abc123",
       "boop",
       "yeah"
     ]

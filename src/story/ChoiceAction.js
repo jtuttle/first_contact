@@ -36,7 +36,6 @@ export default class extends StoryAction {
     var lines = this.terminal.lines
 
     for(var i = lines.length - 1; i >= 0; i--) {
-      console.log(currentChoice)
       if(currentChoice > 0) {
         var line = lines[i]
         
@@ -57,6 +56,8 @@ export default class extends StoryAction {
 
   onChoiceClick(choiceAction, pointer, choiceIndex) {    
     var choice = this.choices[choiceIndex - 1]
+
+    this.game.CHOICES[this.id] = choiceIndex
     this.game.PLAYER_SCORE += choice.score
 
     this.onComplete()

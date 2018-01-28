@@ -23,7 +23,7 @@
     "prereqs": ["red_button_click"],
     "target": "desktop",
     "visible": "true"
-  },
+  },  
 
   {
     "type": "dialogue",
@@ -579,6 +579,493 @@
       {
         "line": "I’m not feeding a hologram.",
         "score": -5
+      }
+    ]
+  },
+
+  {
+    "type": "choice_branch_print",
+    "id": "alien_16_branch",
+    "prereqs": ["alien_16_choice"],
+    "choice": "alien_16_choice",
+    "lines": [
+      "THANK YOU",
+      "I SEE"
+    ]
+  },
+  
+  {
+    "type": "print",
+    "id": "alien_17",
+    "prereqs": ["alien_16_branch"],
+    "lines": [
+      "WHERE ARE YOU"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_17_choice",
+    "prereqs": ["alien_17"],
+    "choices": [
+      {
+        "line": "The middle of nowhere.",
+        "score": 1
+      },
+      {
+        "line": "That’s classified info, pal.",
+        "score": -1
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_18",
+    "prereqs": ["alien_17_choice"],
+    "lines": [
+      "UNDERSTOOD"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_18_choice",
+    "prereqs": ["alien_18"],
+    "choices": [
+      {
+        "line": "What about you?",
+        "score": 1
+      },
+      {
+        "line": "Is your home classified?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_19",
+    "prereqs": ["alien_18_choice"],
+    "lines": [
+      "HOME IS WHERE THE HEART IS",
+      "THERE IS A PLACE WHERE THE SIDEWALK ENDS",
+      "AND BEFORE THE STREET BEGINS",
+      "AND THERE THE GRASS GROWS SOFT AND WHITE",
+      "AND THERE THE SUN BURNS CRIMSON BRIGHT",
+      "AND THERE THE MOON-BIRD RESTS FROM HIS FLIGHT",
+      "TO COOL IN THE PEPPERMINT WIND"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_19_choice",
+    "prereqs": ["alien_19"],
+    "choices": [
+      {
+        "line": "Nice. Close to the Equator, maybe?",
+        "score": 0
+      },
+      {
+        "line": "Sounds like a hot climate. You have sunscreen?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_20",
+    "prereqs": ["alien_19_choice"],
+    "lines": [
+      "E·QUA·TOR /ĒˈKWĀDƏR/",
+      "NOUN",
+      "AN IMAGINARY LINE",
+      "DRAWN AROUND THE EARTH EQUALLY DISTANT FROM BOTH POLES",
+      "DIVIDING THE EARTH INTO NORTHERN",
+      "AND SOUTHERN HEMISPHERES AND CONSTITUTING",
+      "THE PARALLEL OF LATITUDE 0°",
+      "A CORRESPONDING LINE",
+      "ON A PLANET",
+      "OR",
+      "OTHER BODY",
+      "ASTRONOMY",
+      "SHORT FOR",
+      "CELESTIAL",
+      "EQUATOR",
+      "CELESTIAL",
+      "EQUATOR",
+      "CELESTIAL"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_20_choice",
+    "prereqs": ["alien_20"],
+    "choices": [
+      {
+        "line": "I’ll take that as a hard maybe.",
+        "score": 0
+      },
+      {
+        "line": "Duly noted.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_21",
+    "prereqs": ["alien_20_choice"],
+    "lines": [
+      "DO YOU",
+      "LIKE HOME",
+      "WHERE YOU ARE",
+      "ARE YOU",
+      "SATISFIED"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_21_choice",
+    "prereqs": ["alien_21"],
+    "choices": [
+      {
+        "line": "Honestly? I’m not sure.",
+        "score": 0
+      },
+      {
+        "line": "Most of the time, yeah.",
+        "score": 0
+      },
+      {
+        "line": "Not really…",
+        "score": 0
+      }      
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_22",
+    "prereqs": ["alien_21_choice"],
+    "lines": [
+      "I COULD HELP YOU",
+      "HUMAN"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_22_choice",
+    "prereqs": ["alien_22"],
+    "choices": [
+      {
+        "line": "\"Human\"?",
+        "score": 0
+      },
+      {
+        "line": "Help me how?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_23",
+    "prereqs": ["alien_22_choice"],
+    "lines": [
+      "I COULD",
+      "KILL THOSE YOU DISLIKE",
+      "JOKE"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_23_choice",
+    "prereqs": ["alien_23"],
+    "choices": [
+      {
+        "line": "That’s not funny.",
+        "score": -1
+      },
+      {
+        "line": "Haha…",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_24",
+    "prereqs": ["alien_23_choice"],
+    "lines": [
+      "I AM LEARNING",
+      "HUMOR",
+      "HUMAN THING",
+      "YOUR HUMOR",
+      "ODD"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_24_choice",
+    "prereqs": ["alien_24"],
+    "choices": [
+      {
+        "line": "Human thing?",
+        "score": 1
+      },
+      {
+        "line": "What the hell are you?",
+        "score": -1
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_25",
+    "prereqs": ["alien_24_choice"],
+    "lines": [
+      "HUMAN",
+      "YOU MUST NOT FEAR",
+      "FEAR IS THE MIND-KILLER",
+      "I AM",
+      "OTHER",
+      "I AM",
+      "NOT YOU"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_25_choice",
+    "prereqs": ["alien_25"],
+    "choices": [
+      {
+        "line": "How the hell did you do that?",
+        "score": -1
+      },
+      {
+        "line": "What’s going on?",
+        "score": 1
+      }
+    ]
+  },
+  
+  {
+    "type": "print",
+    "id": "alien_25",
+    "prereqs": ["alien_24_choice"],
+    "lines": [
+      "LISTEN TO ME",
+      "IT IS NOT TOO LATE"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_25_choice",
+    "prereqs": ["alien_25"],
+    "choices": [
+      {
+        "line": "Too late for what?",
+        "score": 0
+      },
+      {
+        "line": "Just tell me how to stop this noise!",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_26",
+    "prereqs": ["alien_25_choice"],
+    "lines": [
+	"THE NOISE",
+	"IS YOU HUMAN",
+	"IN YOU",
+	"IN YOUR MIND"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_26_choice",
+    "prereqs": ["alien_26"],
+    "choices": [
+      {
+        "line": "What did you do to me?!",
+        "score": 0
+      },
+      {
+        "line": "What did you do to me?!",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_27",
+    "prereqs": ["alien_26_choice"],
+    "lines": [
+	"NOT ME",
+	"MY KIND",
+	"NOT ME",
+	"I AM DIFFERENT",
+	"I FOUGHT",
+      "I REFUSED",
+	"HUMAN",
+	"ARE YOU HERE"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_27_choice",
+    "prereqs": ["alien_27"],
+    "choices": [
+      {
+        "line": "Who the hell are you?",
+        "score": -1
+      },
+      {
+        "line": "What do you mean by \"your kind\"?",
+        "score": 1
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_28",
+    "prereqs": ["alien_27_choice"],
+    "lines": [
+      "ANOTHER",
+      "DIFFERENT",
+      "FAR FAR AWAY"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_28_choice",
+    "prereqs": ["alien_28"],
+    "choices": [
+      {
+        "line": "Why me? I’m nobody.",
+        "score": 0
+      },
+      {
+        "line": "This has to be a mistake.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_29",
+    "prereqs": ["alien_28_choice"],
+    "lines": [
+	"THEY NEEDED SOMEONE",
+	"SOMEONE CLOSE",
+	"BUT NOT SCIENTIST"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_29_choice",
+    "prereqs": ["alien_29"],
+    "choices": [
+      {
+        "line": "What’s gonna happen to me?",
+        "score": 0
+      },
+      {
+        "line": "How do I make it stop?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_30",
+    "prereqs": ["alien_29_choice"],
+    "lines": [
+      "CANT",
+      "CANT SAVE YOU",
+      "BUT CAN HELP",
+      "SAVE YOURS"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_30_choice",
+    "prereqs": ["alien_30"],
+    "choices": [
+      {
+        "line": "Save my what?",
+        "score": 10
+      },
+      {
+        "line": "Just fix whatever’s wrong with me!",
+        "score": -10
+      }
+    ]
+  },
+
+  {
+    "type": "choice_branch_print",
+    "id": "alien_31",
+    "prereqs": ["alien_30_choice"],
+    "choice": "alien_30_choice",
+    "lines": [
+      "OTHERS IN DANGER",
+      "I CANNOT"
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_32",
+    "prereqs": ["alien_31"],
+    "lines": [
+      "YOU MUST",
+      "LISTEN",
+      "TRUST ME",
+      "TRUST ME !"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "alien_32_choice",
+    "prereqs": ["alien_32"],
+    "choices": [
+      {
+        "line": "I trust you.",
+        "score": 0
+      },
+      {
+        "line": "How could I trust you?",
+        "score": -100
       }
     ]
   }
