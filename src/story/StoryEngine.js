@@ -11,6 +11,7 @@ import PasswordPromptAction from './PasswordPromptAction'
 import PrintAction from './PrintAction'
 import SetVisibilityAction from './SetVisibilityAction'
 import ShowTerminalAction from './ShowTerminalAction'
+import WaitAction from './WaitAction'
 import ZoomAction from './ZoomAction'
 
 export default class {
@@ -120,6 +121,9 @@ export default class {
       break;
     case "show_terminal":
       return ShowTerminalAction
+      break;
+    case "wait":
+      return WaitAction
       break;
     case "zoom":
       return ZoomAction
