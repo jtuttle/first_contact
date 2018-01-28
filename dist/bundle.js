@@ -10877,7 +10877,7 @@ var _class = function (_Phaser$State) {
       this.load.image('soylent', 'assets/images/soylent.jpg');
       this.load.spritesheet('fish', 'assets/images/fish.png', 200, 200);
       this.load.image('fish_bowl', 'assets/images/fish_bowl.png');
-      this.load.image('telephone', 'assets/images/telephone.jpg');
+      this.load.image('telephone', 'assets/images/telephone.png');
 
       this.load.image('white_square', 'assets/images/white_square.png');
       this.load.image('red_button', 'assets/images/red_button.jpg');
@@ -10886,11 +10886,14 @@ var _class = function (_Phaser$State) {
       this.load.image('signal_icon', 'assets/images/signal_icon.png');
       this.load.image('signal_dial', 'assets/images/dial.png');
 
+      this.load.audio('beep', 'assets/sfx/PhoneDial_SingleButtonPush.ogg');
       this.load.audio('bad_ending', 'assets/sfx/Bad_Ending.ogg');
       this.load.audio('corrupted_stream', 'assets/sfx/GarbledMessage.ogg');
       this.load.audio('right_password', 'assets/sfx/RightPassword.ogg');
       this.load.audio('signal_fixed', 'assets/sfx/MovingDishintoPlace.ogg');
       this.load.audio('wrong_password', 'assets/sfx/WrongPassword.ogg');
+
+      this.load.audio('music', 'assets/music/Music.ogg');
 
       this.load.json('story', 'assets/story.json');
     }
@@ -11011,6 +11014,8 @@ var _class = function (_Phaser$State) {
       this.game.PLAYER_SCORE = 0;
       this.game.CHOICES = {};
 
+      this.game.sound.play("music", 1, true);
+
       this.background = new _Background2.default({
         game: this.game,
         x: this.world.centerX,
@@ -11040,8 +11045,8 @@ var _class = function (_Phaser$State) {
 
       this.telephone = new _Telephone2.default({
         game: this.game,
-        x: 900,
-        y: this.world.height - 100
+        x: 950,
+        y: this.world.height - 240
       });
       this.game.add.existing(this.telephone);
 
@@ -12888,8 +12893,8 @@ var _class = function (_Phaser$Sprite) {
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, "telephone"));
 
-    _this.scale.x = 0.5;
-    _this.scale.y = 0.5;
+    _this.scale.x = 1;
+    _this.scale.y = 1;
     _this.anchor.setTo(0.5);
     return _this;
   }
@@ -13069,7 +13074,7 @@ var _class = function (_Phaser$Group) {
     _this.terminalIcon = new _TerminalIcon2.default({
       game: game,
       x: -210,
-      y: 50
+      y: 80
     });
     _this.add(_this.terminalIcon);
     _this.terminalIcon.inputEnabled = true;
@@ -13079,7 +13084,7 @@ var _class = function (_Phaser$Group) {
     _this.signalIcon = new _SignalIcon2.default({
       game: game,
       x: -130,
-      y: 50
+      y: 80
     });
     _this.add(_this.signalIcon);
     _this.signalIcon.inputEnabled = true;
@@ -13236,8 +13241,8 @@ var _class = function (_Phaser$Sprite) {
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, "terminal_icon"));
 
-    _this.scale.x = 0.1;
-    _this.scale.y = 0.1;
+    _this.scale.x = 1;
+    _this.scale.y = 1;
     _this.anchor.setTo(0.5);
     return _this;
   }
@@ -13287,8 +13292,8 @@ var _class = function (_Phaser$Sprite) {
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, "signal_icon"));
 
-    _this.scale.x = 0.25;
-    _this.scale.y = 0.25;
+    _this.scale.x = 1;
+    _this.scale.y = 1;
     _this.anchor.setTo(0.5);
     return _this;
   }

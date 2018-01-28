@@ -15,11 +15,11 @@ export default class extends Phaser.State {
     // load your assets
     //
     this.load.image('background', 'assets/images/background.png')
-    
+
     this.load.image('soylent', 'assets/images/soylent.jpg')
     this.load.spritesheet('fish', 'assets/images/fish.png', 200, 200)
     this.load.image('fish_bowl', 'assets/images/fish_bowl.png')
-    this.load.image('telephone', 'assets/images/telephone.jpg')
+    this.load.image('telephone', 'assets/images/telephone.png')
 
     this.load.image('white_square', 'assets/images/white_square.png')
     this.load.image('red_button', 'assets/images/red_button.jpg')
@@ -28,11 +28,15 @@ export default class extends Phaser.State {
     this.load.image('signal_icon', 'assets/images/signal_icon.png')
     this.load.image('signal_dial', 'assets/images/dial.png')
 
+
+    this.load.audio('beep', 'assets/sfx/PhoneDial_SingleButtonPush.ogg')
     this.load.audio('bad_ending', 'assets/sfx/Bad_Ending.ogg')
     this.load.audio('corrupted_stream', 'assets/sfx/GarbledMessage.ogg')
     this.load.audio('right_password', 'assets/sfx/RightPassword.ogg')
     this.load.audio('signal_fixed', 'assets/sfx/MovingDishintoPlace.ogg')
     this.load.audio('wrong_password', 'assets/sfx/WrongPassword.ogg')
+    
+    this.load.audio('music', 'assets/music/Music.ogg')
 
     this.load.json('story', 'assets/story.json')
   }

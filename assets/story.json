@@ -23,7 +23,14 @@
     "prereqs": ["red_button_click"],
     "target": "desktop",
     "visible": "true"
-  },  
+  },
+
+  { 
+    "type": "sound",
+    "id": "show_desktop_sound",
+    "prereqs": ["red_button_click"],
+    "sfx": "beep"
+  },
 
   {
     "type": "dialogue",
