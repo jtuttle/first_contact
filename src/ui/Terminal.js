@@ -35,11 +35,15 @@ export default class extends Phaser.Group {
       return
     }
     
+    this.charDelayCount = this.charDelay
+    
     var lastLine = this.lastLine()
     var nextChar = this.charBuffer.shift()
 
     if(nextChar == "\n") {
       this.shiftLines()
+      
+      this.charDelayCount = 10 + (Math.random() * 10)
     } else {
       lastLine.text = lastLine.text + nextChar
 
@@ -51,8 +55,6 @@ export default class extends Phaser.Group {
     if(this.charBuffer.length == 0) {
       this.onBufferEmptySignal.dispatch()
     }
-
-    this.charDelayCount = this.charDelay
   }
   
   addText(text) {
