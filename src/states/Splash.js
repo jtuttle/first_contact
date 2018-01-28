@@ -26,7 +26,13 @@ export default class extends Phaser.State {
     this.load.image('screen', 'assets/images/screen.png')
     this.load.image('terminal_icon', 'assets/images/terminal_icon.png')
     this.load.image('signal_icon', 'assets/images/signal_icon.png')
-    this.load.image('signal_dial', 'assets/images/dial.jpeg')
+    this.load.image('signal_dial', 'assets/images/dial.png')
+
+    this.load.audio('bad_ending', 'assets/sfx/Bad_Ending.ogg')
+    this.load.audio('corrupted_stream', 'assets/sfx/GarbledMessage.ogg')
+    this.load.audio('right_password', 'assets/sfx/RightPassword.ogg')
+    this.load.audio('signal_fixed', 'assets/sfx/MovingDishintoPlace.ogg')
+    this.load.audio('wrong_password', 'assets/sfx/WrongPassword.ogg')
 
     this.load.json('story', 'assets/story.json')
   }

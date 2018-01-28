@@ -83,8 +83,10 @@ export default class extends StoryAction {
 
   onChoiceClick(choiceText, pointer, password) {
     if(password == this.password) {
+      game.sound.play('right_password');
       this.onComplete()
     } else {
+      game.sound.play('wrong_password');
       this.removeClickListeners();
       this.showPrompt();
     }

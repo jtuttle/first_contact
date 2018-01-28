@@ -10884,7 +10884,13 @@ var _class = function (_Phaser$State) {
       this.load.image('screen', 'assets/images/screen.png');
       this.load.image('terminal_icon', 'assets/images/terminal_icon.png');
       this.load.image('signal_icon', 'assets/images/signal_icon.png');
-      this.load.image('signal_dial', 'assets/images/dial.jpeg');
+      this.load.image('signal_dial', 'assets/images/dial.png');
+
+      this.load.audio('bad_ending', 'assets/sfx/Bad_Ending.ogg');
+      this.load.audio('corrupted_stream', 'assets/sfx/GarbledMessage.ogg');
+      this.load.audio('right_password', 'assets/sfx/RightPassword.ogg');
+      this.load.audio('signal_fixed', 'assets/sfx/MovingDishintoPlace.ogg');
+      this.load.audio('wrong_password', 'assets/sfx/WrongPassword.ogg');
 
       this.load.json('story', 'assets/story.json');
     }
@@ -11171,13 +11177,13 @@ var _ShowTerminalAction = __webpack_require__(/*! ./ShowTerminalAction */ 357);
 
 var _ShowTerminalAction2 = _interopRequireDefault(_ShowTerminalAction);
 
+var _SoundAction = __webpack_require__(/*! ./SoundAction */ 375);
+
+var _SoundAction2 = _interopRequireDefault(_SoundAction);
+
 var _WaitAction = __webpack_require__(/*! ./WaitAction */ 358);
 
 var _WaitAction2 = _interopRequireDefault(_WaitAction);
-
-var _ZoomAction = __webpack_require__(/*! ./ZoomAction */ 359);
-
-var _ZoomAction2 = _interopRequireDefault(_ZoomAction);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11303,11 +11309,14 @@ var _class = function () {
         case "show_terminal":
           return _ShowTerminalAction2.default;
           break;
+        case "sound":
+          return _SoundAction2.default;
+          break;
         case "wait":
           return _WaitAction2.default;
           break;
         case "zoom":
-          return _ZoomAction2.default;
+          return ZoomAction;
           break;
       }
     }
@@ -11767,6 +11776,8 @@ var _class = function (_StoryAction) {
     value: function onEnable() {
       _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), 'onEnable', this).call(this);
 
+      this.streamSfx = this.game.sound.play('corrupted_stream');
+
       this.terminal.onBufferEmptySignal.add(this.onBufferEmpty, this);
 
       this.terminal.addText(this.corruptPhrase() + "\n");
@@ -11776,6 +11787,12 @@ var _class = function (_StoryAction) {
   }, {
     key: 'onComplete',
     value: function onComplete() {
+      this.streamSfx.stop();
+
+      this.game.sound.play('signal_fixed');
+
+      this.signalControl.disable();
+
       this.terminal.onBufferEmptySignal.remove(this.onBufferEmpty, this);
       this.signalControl.onSettingChangeSignal.remove(this.onSignalChange, this);
 
@@ -12364,8 +12381,10 @@ var _class = function (_StoryAction) {
     key: "onChoiceClick",
     value: function onChoiceClick(choiceText, pointer, password) {
       if (password == this.password) {
+        game.sound.play('right_password');
         this.onComplete();
       } else {
+        game.sound.play('wrong_password');
         this.removeClickListeners();
         this.showPrompt();
       }
@@ -12674,80 +12693,7 @@ var _class = function (_StoryAction) {
 exports.default = _class;
 
 /***/ }),
-/* 359 */
-/*!*********************************!*\
-  !*** ./src/story/ZoomAction.js ***!
-  \*********************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _StoryAction2 = __webpack_require__(/*! ./StoryAction */ 12);
-
-var _StoryAction3 = _interopRequireDefault(_StoryAction2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_StoryAction) {
-  _inherits(_class, _StoryAction);
-
-  function _class(_ref) {
-    var game = _ref.game,
-        data = _ref.data;
-
-    _classCallCheck(this, _class);
-
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, data));
-
-    var gameState = _this.game.state.states[_this.game.state.current];
-    _this.target = gameState[data.target];
-    return _this;
-  }
-
-  _createClass(_class, [{
-    key: "onEnable",
-    value: function onEnable() {
-      _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "onEnable", this).call(this);
-
-      this.target.inputEnabled = true;
-      this.target.events.onInputDown.add(this.onClick, this, 0);
-    }
-  }, {
-    key: "onComplete",
-    value: function onComplete() {
-
-      _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "onComplete", this).call(this);
-    }
-  }, {
-    key: "onClick",
-    value: function onClick() {
-      console.log("clickly");
-    }
-  }]);
-
-  return _class;
-}(_StoryAction3.default);
-
-exports.default = _class;
-
-/***/ }),
+/* 359 */,
 /* 360 */
 /*!***********************************!*\
   !*** ./src/sprites/Background.js ***!
@@ -13122,8 +13068,8 @@ var _class = function (_Phaser$Group) {
 
     _this.terminalIcon = new _TerminalIcon2.default({
       game: game,
-      x: -250,
-      y: 100
+      x: -210,
+      y: 50
     });
     _this.add(_this.terminalIcon);
     _this.terminalIcon.inputEnabled = true;
@@ -13132,8 +13078,8 @@ var _class = function (_Phaser$Group) {
 
     _this.signalIcon = new _SignalIcon2.default({
       game: game,
-      x: -150,
-      y: 100
+      x: -130,
+      y: 50
     });
     _this.add(_this.signalIcon);
     _this.signalIcon.inputEnabled = true;
@@ -13539,10 +13485,11 @@ var _class = function (_Phaser$Group) {
     _this.signalDial = new _SignalDial2.default({
       game: _this.game,
       x: 300,
-      y: 150
+      y: 130
     });
     _this.add(_this.signalDial);
     _this.signalDial.inputEnabled = true;
+    _this.signalDial.input.useHandCursor = true;
     _this.signalDial.events.onInputDown.add(_this.onSignalDialClick, _this);
 
     _this.signalSettings = ["12.3", "45.6", "78.9", "99.8"];
@@ -13555,12 +13502,18 @@ var _class = function (_Phaser$Group) {
   _createClass(_class, [{
     key: 'onSignalDialClick',
     value: function onSignalDialClick() {
-      this.signalDial.rotation = this.currentSetting * 90 % 360;
+      this.signalDial.rotation = (this.signalDial.rotation + 20) % 360;
 
       this.currentSetting = (this.currentSetting + 1) % this.signalSettings.length;
       var currentSetting = this.signalSettings[this.currentSetting];
 
       this.onSettingChangeSignal.dispatch(currentSetting);
+    }
+  }, {
+    key: 'disable',
+    value: function disable() {
+      this.signalDial.input.useHandCursor = false;
+      this.signalDial.inputEnabled = false;
     }
   }]);
 
@@ -13639,6 +13592,68 @@ exports.default = {
   gameHeight: 576,
   localStorageName: 'phaseres6webpack'
 };
+
+/***/ }),
+/* 374 */,
+/* 375 */
+/*!**********************************!*\
+  !*** ./src/story/SoundAction.js ***!
+  \**********************************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _StoryAction2 = __webpack_require__(/*! ./StoryAction */ 12);
+
+var _StoryAction3 = _interopRequireDefault(_StoryAction2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_StoryAction) {
+  _inherits(_class, _StoryAction);
+
+  function _class(_ref) {
+    var game = _ref.game,
+        data = _ref.data;
+
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, data));
+
+    _this.sfx = data.sfx;
+    return _this;
+  }
+
+  _createClass(_class, [{
+    key: 'onEnable',
+    value: function onEnable() {
+      _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), 'onEnable', this).call(this);
+
+      this.game.sound.play(this.sfx);
+    }
+  }]);
+
+  return _class;
+}(_StoryAction3.default);
+
+exports.default = _class;
 
 /***/ })
 ],[130]);
