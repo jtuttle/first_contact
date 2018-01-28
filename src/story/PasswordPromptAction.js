@@ -39,6 +39,11 @@ export default class extends StoryAction {
     
     this.removeClickListeners()
 
+    Object.keys(this.unlockers).forEach(function(unlocker) {
+      var node = this.storyEngine.getNode(unlocker)
+      node.onCompleteSignal.remove(this.onUnlockerNodeComplete, this)
+    }, this)
+
     super.onComplete()
   }
 
