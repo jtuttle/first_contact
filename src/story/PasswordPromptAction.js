@@ -7,7 +7,8 @@ export default class extends StoryAction {
     this.password = this.data.password
 
     this.choices = [
-      "abc123",
+      "Lentilsoy",
+//      "abc123",
       "boop",
       "yeah"
     ]
@@ -15,6 +16,7 @@ export default class extends StoryAction {
     this.unlockers = data.unlockers
 
     var gameState = this.game.state.states[this.game.state.current]
+    this.desktop = gameState.desktop
     this.terminal = gameState.desktop.terminal
     this.storyEngine = gameState.storyEngine
 
@@ -33,7 +35,7 @@ export default class extends StoryAction {
   }
 
   onComplete() {
-    this.terminal.unlock()
+    this.desktop.unlock()
     
     this.removeClickListeners()
 

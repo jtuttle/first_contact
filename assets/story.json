@@ -1,8 +1,23 @@
 [
   {
     "type": "click",
-    "id": "soylent_click",
+    "id": "red_button_click",
     "prereqs": [],
+    "target": "redButton"
+  },
+
+  {
+    "type": "set_visibility",
+    "id": "show_desktop",
+    "prereqs": ["red_button_click"],
+    "target": "desktop",
+    "visible": "true"
+  },
+  
+  {
+    "type": "click",
+    "id": "soylent_click",
+    "prereqs": ["show_desktop"],
     "target": "soylent"
   },
 
@@ -22,7 +37,7 @@
   {
     "type": "click",
     "id": "fish_bowl_click",
-    "prereqs": [],
+    "prereqs": ["show_desktop"],
     "target": "fishBowl"
   },
 
@@ -39,7 +54,7 @@
   {
     "type": "click",
     "id": "telephone_click",
-    "prereqs": [],
+    "prereqs": ["show_desktop"],
     "target": "telephone"
   },
 
@@ -57,7 +72,7 @@
   {
     "type": "password_prompt",
     "id": "password",
-    "prereqs": [],
+    "prereqs": ["show_desktop"],
     "password": "Lentilsoy",
     "unlockers": {
       "soylent_dialogue": "Lentilsoy",

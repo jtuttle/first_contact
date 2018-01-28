@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-import CloseBtn from '../sprites/CloseButton'
 
 export default class extends Phaser.Group {
   constructor({ game, lineCount, lineCharWidth }) {
@@ -14,7 +13,7 @@ export default class extends Phaser.Group {
       
       var line = game.add.text(0, y, '', {
         font: '20px Courier New',
-        fill: '#77BFA3',
+        fill: '#00FFEA',
         smoothed: false
       }, this)
       
@@ -24,21 +23,8 @@ export default class extends Phaser.Group {
 //    this.textWidth = this.getTextWidth()
 
     this.charBuffer = []
-
-    this.closeBtn = new CloseBtn({
-      game: game,
-//      x: this.textWidth,
-      x: 580,
-      y: 0
-    })
-    this.add(this.closeBtn)
-    this.closeBtn.inputEnabled = true
-    this.closeBtn.events.onInputDown.add(this.onCloseClick, this)
-    this.onCloseSignal = new Phaser.Signal()
     
     this.onBufferEmptySignal = new Phaser.Signal()
-
-    this.closeBtn.visible = false
   }
 
   update() {
@@ -90,13 +76,5 @@ export default class extends Phaser.Group {
 
   lastLine() {
     return this.lines[this.lines.length - 1]
-  }
-
-  onCloseClick() {
-    this.onCloseSignal.dispatch()
-  }
-
-  unlock() {
-    this.closeBtn.visible = true
   }
 }

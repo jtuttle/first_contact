@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 
+import Screen from '../sprites/Screen'
 import TerminalIcon from '../sprites/TerminalIcon'
 import SignalIcon from '../sprites/SignalIcon'
 
@@ -10,9 +11,16 @@ export default class extends Phaser.Group {
   constructor({ game }) {
     super(game)
 
+    this.screen = new Screen({
+      game: game,
+      x: 0,
+      y: 0
+    })
+    this.add(this.screen)
+    
     this.terminalIcon = new TerminalIcon({
       game: game,
-      x: 100,
+      x: -250,
       y: 100
     })
     this.add(this.terminalIcon)
@@ -21,8 +29,8 @@ export default class extends Phaser.Group {
 
     this.signalIcon = new SignalIcon({
       game: game,
-      x: 100,
-      y: 200
+      x: -150,
+      y: 100
     })
     this.add(this.signalIcon)
     this.signalIcon.inputEnabled = true
@@ -30,21 +38,27 @@ export default class extends Phaser.Group {
 
     this.terminal = new Terminal({
       game: this.game,
-      lineCount: 12,
+      lineCount: 10,
       lineCharWidth: 50,
     })
+    this.terminal.x = -285
+    this.terminal.y = -230
     this.add(this.terminal)
-    this.terminal.onCloseSignal.add(this.onTerminalClose, this)
 
     this.signalControl = new SignalControl({
       game: this.game,
     })
+    this.signalControl.x = -285
+    this.signalControl.y = -230
     this.add(this.signalControl)
-    this.signalControl.onCloseSignal.add(this.onSignalClose, this)
 
     this.hideIcons()
     this.signalControl.visible = false
     this.terminal.visible = true
+  }
+
+  unlock() {
+    this.showIcons()
   }
 
   hideIcons() {
@@ -58,22 +72,12 @@ export default class extends Phaser.Group {
   }
   
   onTerminalOpen() {
-    this.hideIcons()
+    this.signalControl.visible = false
     this.terminal.visible = true
   }
 
-  onTerminalClose() {
-    this.terminal.visible = false
-    this.showIcons()
-  }
-
   onSignalOpen() {
-    this.hideIcons()
+    this.terminal.visible = false
     this.signalControl.visible = true
-  }
-  
-  onSignalClose() {
-    this.showIcons()
-    this.signalControl.visible = false
   }
 }

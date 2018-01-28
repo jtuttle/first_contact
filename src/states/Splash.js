@@ -20,9 +20,10 @@ export default class extends Phaser.State {
     this.load.image('fish_bowl', 'assets/images/fish_bowl.jpg')
     this.load.image('telephone', 'assets/images/telephone.jpg')
 
+    this.load.image('red_button', 'assets/images/red_button.jpg')
+    this.load.image('screen', 'assets/images/screen.png')
     this.load.image('terminal_icon', 'assets/images/terminal_icon.png')
     this.load.image('signal_icon', 'assets/images/signal_icon.png')
-    this.load.image('close_btn', 'assets/images/close_btn.jpg')
     this.load.image('signal_dial', 'assets/images/dial.jpeg')
 
     this.load.json('story', 'assets/story.json')
