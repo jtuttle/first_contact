@@ -8,6 +8,7 @@ import Soylent from '../sprites/Soylent'
 import FishBowl from '../sprites/FishBowl'
 import Telephone from '../sprites/Telephone'
 import RedButton from '../sprites/RedButton'
+import WhiteSquare from '../sprites/WhiteSquare'
 
 import Desktop from '../ui/Desktop'
 
@@ -43,9 +44,10 @@ export default class extends Phaser.State {
     this.game.add.existing(this.fishBowl)
 
 
-    this.fish = this.game.add.sprite(50, 250, 'fish')
+    this.fish = this.game.add.sprite(10, 280, 'fish')
     var bob = this.fish.animations.add("bob")
     this.fish.animations.play("bob", 20, true)
+    this.fish.scale.setTo(0.7)
 
     
     this.telephone = new Telephone({
@@ -70,6 +72,17 @@ export default class extends Phaser.State {
     this.game.add.existing(this.desktop)
     this.desktop.visible = false
 
+
+    this.modal = new WhiteSquare({
+      game: this.game,
+      x: this.game.world.centerX,
+      y: this.game.world.centerY
+    })
+    this.modal.width = this.game.world.width
+    this.modal.height = this.game.world.height
+    this.modal.visible = false
+    this.game.add.existing(this.modal)
+
     this.storyEngine = new StoryEngine({
       game: this.game,
       storyJson: game.cache.getJSON('story')
@@ -84,5 +97,19 @@ export default class extends Phaser.State {
 
   render() {
 
+  }
+
+  fade(color) {
+    this.FADE_COLOR = color
+    this.game.camera.fade(color)
+    this.game.camera.onFadeComplete.addOnce(this.onFadeComplete, this);
+  }
+
+  onFadeComplete() {
+    this.modal.tint = this.FADE_COLOR
+    this.FADE_COLOR = undefined
+    
+    this.modal.visible = true
+    this.game.camera.reset()
   }
 }

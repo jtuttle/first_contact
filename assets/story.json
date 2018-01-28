@@ -115,7 +115,7 @@
   {
     "type": "corrupted_stream",
     "id": "turn_dial",
-    "prereqs": ["password"],
+    "prereqs": ["monologue_3"],
     "phrase": "SET THE SIGNAL TO 9.88 FOR CONTACT"
   },
 
@@ -1072,7 +1072,7 @@
 
   {
     "type": "choice_score",
-    "id": "good_ending",
+    "id": "good_ending_score",
     "prereqs": ["alien_32_choice"],
     "value": 10,
     "condition": "greater_than_or_equal"
@@ -1080,7 +1080,7 @@
 
   {
     "type": "choice_score",
-    "id": "bad_ending",
+    "id": "bad_ending_score",
     "prereqs": ["alien_32_choice"],
     "value": 10,
     "condition": "less_than"
@@ -1089,7 +1089,7 @@
   {
     "type": "print",
     "id": "good_1",
-    "prereqs": ["good_ending"],
+    "prereqs": ["good_ending_score"],
     "lines": [
       "THANK YOU",
       "THANK YOU . . ."
@@ -1160,9 +1160,50 @@
         "score": 0
       },
       {
-        "line": "What? No way!",
+        "line": "Just do what you have to do.",
         "score": 0
       }
+    ]
+  },
+
+  {
+    "type": "fade",
+    "id": "good_fade",
+    "prereqs": ["good_3_choice"],
+    "color": "#FFFFFF"
+  },
+
+  {
+    "type": "dialogue",
+    "id": "good_4",
+    "prereqs": ["good_fade"],
+    "lines": [
+      "Hello?",
+      "Are you alive?",
+      "Hey! The janitor’s alive!",
+      "Damn, what a mess... That holostation looks crispier than fried chicken.",
+      "Yeah, it’s fried alright — looks like it blew up when the power went down…",
+      "But you made it out okay.",
+      "Let’s get you some help, alright?"
+    ]
+  },
+
+  {
+    "type": "show_terminal",
+    "id": "good_5",
+    "prereqs": ["good_4"]
+  },
+
+  {
+    "type": "print",
+    "id": "good_6",
+    "prereqs": ["good_5"],
+    "lines": [
+      "HOPE IS THE THING WITH FEATHERS",
+      "THAT PERCHES IN THE SOUL",
+      "AND SINGS THE TUNE WITHOUT THE WORDS",
+      "AND NEVER STOPS",
+      "AT ALL"
     ]
   }
 ]

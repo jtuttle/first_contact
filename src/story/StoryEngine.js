@@ -4,9 +4,12 @@ import ChoiceScoreAction from './ChoiceScoreAction'
 import ClickAction from './ClickAction'
 import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
+import FadeAction from './FadeAction'
+import GoodEndingAction from './GoodEndingAction'
 import PasswordPromptAction from './PasswordPromptAction'
 import PrintAction from './PrintAction'
 import SetVisibilityAction from './SetVisibilityAction'
+import ShowTerminalAction from './ShowTerminalAction'
 import ZoomAction from './ZoomAction'
 
 export default class {
@@ -96,6 +99,12 @@ export default class {
     case "dialogue":
       return DialogueAction
       break;
+    case "fade":
+      return FadeAction
+      break;
+    case "good_ending":
+      return GoodEndingAction
+      break;
     case "password_prompt":
       return PasswordPromptAction
       break;
@@ -104,6 +113,9 @@ export default class {
       break;
     case "set_visibility":
       return SetVisibilityAction
+      break;
+    case "show_terminal":
+      return ShowTerminalAction
       break;
     case "zoom":
       return ZoomAction

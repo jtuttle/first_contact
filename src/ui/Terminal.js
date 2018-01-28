@@ -20,15 +20,20 @@ export default class extends Phaser.Group {
       this.lines.push(line)
     }
 
-//    this.textWidth = this.getTextWidth()
-
     this.charBuffer = []
+    this.charDelay = 1
+    this.charDelayCount = 0
     
     this.onBufferEmptySignal = new Phaser.Signal()
   }
 
   update() {
     if(!this.visible || this.charBuffer.length == 0) { return }
+
+    if(this.charDelayCount > 0) {
+      this.charDelayCount--
+      return
+    }
     
     var lastLine = this.lastLine()
     var nextChar = this.charBuffer.shift()
@@ -46,22 +51,9 @@ export default class extends Phaser.Group {
     if(this.charBuffer.length == 0) {
       this.onBufferEmptySignal.dispatch()
     }
-  }
 
-  /*
-  getTextWidth() {
-    var line = this.lines[0]
-    line.text = Array(this.lineCharWidth).join("X")
-    line.updateText()
-    
-    var width = line.width
-    
-    line.text = ""
-    line.updateText()
-
-    return width
+    this.charDelayCount = this.charDelay
   }
-  */
   
   addText(text) {
     this.charBuffer = this.charBuffer.concat(text.split(''))
