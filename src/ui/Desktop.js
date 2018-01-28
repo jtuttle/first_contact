@@ -25,6 +25,7 @@ export default class extends Phaser.Group {
     })
     this.add(this.terminalIcon)
     this.terminalIcon.inputEnabled = true
+    this.terminalIcon.input.useHandCursor = true;
     this.terminalIcon.events.onInputDown.add(this.onTerminalOpen, this)
 
     this.signalIcon = new SignalIcon({
@@ -34,6 +35,7 @@ export default class extends Phaser.Group {
     })
     this.add(this.signalIcon)
     this.signalIcon.inputEnabled = true
+    this.signalIcon.input.useHandCursor = true;
     this.signalIcon.events.onInputDown.add(this.onSignalOpen, this)
 
     this.terminal = new Terminal({

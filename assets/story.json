@@ -1,5 +1,16 @@
 [
   {
+    "type": "dialogue",
+    "id": "monologue_1",
+    "prereqs": [],
+    "lines": [
+      "Still working, huh? Thought they pulled the plug on everything.",
+      "Did they forget to turn this one off?",
+      "… Guess I should check, just in case."
+    ]
+  },
+  
+  {
     "type": "click",
     "id": "red_button_click",
     "prereqs": [],
@@ -12,6 +23,16 @@
     "prereqs": ["red_button_click"],
     "target": "desktop",
     "visible": "true"
+  },
+
+  {
+    "type": "dialogue",
+    "id": "monologue_2",
+    "prereqs": ["show_desktop"],
+    "lines": [
+      "Uh… I guess it’s not going to be 123password.",
+      "Anybody leave a sticky note on here, or…?"
+    ]
   },
   
   {

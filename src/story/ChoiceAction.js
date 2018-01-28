@@ -20,8 +20,6 @@ export default class extends StoryAction {
     this.choices.forEach(function(choice) {
       this.terminal.addText(this.choiceChar + " " + choice + "\n\n")
     }, this)
-
-    this.terminal.addText("\n")
   }
 
   onComplete() {
@@ -43,6 +41,7 @@ export default class extends StoryAction {
       
       if(currentChoice > 0 && line.text != '') {
         line.inputEnabled = true
+        line.input.useHandCursor = true;
         line.events.onInputDown.addOnce(
           this.onChoiceClick, this, 0, { choice: currentChoice }
         )

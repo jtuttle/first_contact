@@ -12,8 +12,16 @@ export default class extends StoryAction {
     super.onEnable()
     
     this.target.inputEnabled = true
+    this.target.input.useHandCursor = true;
     this.target.events.onInputDown.addOnce(
       this.onComplete, this, 0
     )
+  }
+
+  onComplete() {
+    this.target.input.useHandCursor = false;
+    this.target.inputEnabled = false
+
+    super.onComplete()
   }
 }
