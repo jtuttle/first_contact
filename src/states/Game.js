@@ -19,6 +19,8 @@ export default class extends Phaser.State {
   create () {
     this.game.PLAYER_SCORE = 0
     this.game.CHOICES = {}
+
+    this.game.sound.play("music", 1, true);
     
     this.background = new Background({
       game: this.game,
@@ -49,8 +51,8 @@ export default class extends Phaser.State {
     
     this.telephone = new Telephone({
       game: this.game,
-      x: 900,
-      y: this.world.height - 100
+      x: 950,
+      y: this.world.height - 240
     })
     this.game.add.existing(this.telephone)
 
