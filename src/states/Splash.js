@@ -38,6 +38,8 @@ export default class extends Phaser.State {
     this.load.audio('right_password', 'assets/sfx/RightPassword.ogg')
     this.load.audio('signal_fixed', 'assets/sfx/MovingDishintoPlace.ogg')
     this.load.audio('wrong_password', 'assets/sfx/WrongPassword.ogg')
+    this.load.audio('at_last', 'assets/sfx/at_last.ogg')
+    this.load.audio('plastic_chips', 'assets/sfx/plastic_chips.ogg')
     
     this.load.audio('music', 'assets/music/Music.ogg')
 
