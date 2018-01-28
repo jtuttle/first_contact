@@ -19,6 +19,8 @@ export default class extends StoryAction {
     this.gameState.redButton.visible = false
     
     this.gameState.desktop.visible = true
+    this.gameState.desktop.terminalIcon.visible = false
+    this.gameState.desktop.signalIcon.visible = false
     this.gameState.desktop.screen.visible = false
 
     this.onComplete()

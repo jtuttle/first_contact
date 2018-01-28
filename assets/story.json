@@ -1304,11 +1304,17 @@
     "id": "good_5",
     "prereqs": ["good_wait_2"]
   },
+  
+  {
+    "type": "clear_terminal",
+    "id": "good_clear",
+    "prereqs": ["good_5"]
+  },
 
   {
     "type": "print",
     "id": "good_6",
-    "prereqs": ["good_5"],
+    "prereqs": ["good_clear"],
     "lines": [
       "HOPE IS THE THING WITH FEATHERS",
       "THAT PERCHES IN THE SOUL",
