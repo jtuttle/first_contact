@@ -14,6 +14,8 @@ export default class extends StoryAction {
   onEnable() {
     super.onEnable()
 
+    this.streamSfx = this.game.sound.play('corrupted_stream');
+
     this.terminal.onBufferEmptySignal.add(this.onBufferEmpty, this)
     
     this.terminal.addText(this.corruptPhrase() + "\n")
@@ -22,6 +24,12 @@ export default class extends StoryAction {
   }
 
   onComplete() {
+    this.streamSfx.stop()
+    
+    this.game.sound.play('signal_fixed');
+    
+    this.signalControl.disable()
+    
     this.terminal.onBufferEmptySignal.remove(this.onBufferEmpty, this)
     this.signalControl.onSettingChangeSignal.remove(this.onSignalChange, this)
 

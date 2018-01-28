@@ -1,4 +1,4 @@
-[
+[  
   {
     "type": "dialogue",
     "id": "monologue_1",
@@ -1004,24 +1004,39 @@
 
   {
     "type": "print",
-    "id": "alien_28",
+    "id": "alien_28_1",
     "prereqs": ["alien_27_choice"],
     "lines": [
-	"NOT ME",
-	"MY KIND",
-	"NOT ME",
-	"I AM DIFFERENT",
-	"I FOUGHT",
-      "I REFUSED",
-	"HUMAN",
-	"ARE YOU HERE"
+      "NOT ME",
+      "MY KIND",
+      "NOT ME",
+      "I AM DIFFERENT",
+      "I FOUGHT",
+      "I REFUSED"
+    ]
+  },
+
+  {
+    "type": "wait",
+    "id": "alien_28_1_wait",
+    "prereqs": ["alien_28_1"],
+    "duration": 1
+  },
+  
+  {
+    "type": "print",
+    "id": "alien_28_2",
+    "prereqs": ["alien_28_1_wait"],
+    "lines": [
+      "HUMAN",
+      "ARE YOU HERE"
     ]
   },
 
   {
     "type": "choice",
     "id": "alien_28_choice",
-    "prereqs": ["alien_28"],
+    "prereqs": ["alien_28_2"],
     "choices": [
       {
         "line": "Who the hell are you?",
@@ -1323,7 +1338,7 @@
   {
     "type": "choice_score",
     "id": "bad_ending_score",
-    "prereqs": ["alien_32_choice"],
+    "prereqs": ["alien_33_choice"],
     "value": 10,
     "condition": "less_than"
   },
@@ -1412,5 +1427,12 @@
       "AT LAST."
     ],
     "charFrameDelay": 10
+  },
+
+  { 
+    "type": "sound",
+    "id": "bad_sound",
+    "prereqs": ["bad_wait"],
+    "sfx": "bad_ending"
   }
 ]
