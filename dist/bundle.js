@@ -12409,6 +12409,7 @@ var _class = function (_StoryAction) {
       var index = Object.keys(this.unlockers).indexOf(node.id);
       this.choices[index] = this.unlockers[node.id];
 
+      this.removeClickListeners();
       this.showPrompt();
     }
   }]);
