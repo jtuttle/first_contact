@@ -99,10 +99,11 @@ export default class extends Phaser.State {
 
   }
 
-  fade(color) {
+  fade(color, duration) {
     this.FADE_COLOR = color
-    this.game.camera.fade(color)
+    
     this.game.camera.onFadeComplete.addOnce(this.onFadeComplete, this);
+    this.game.camera.fade(color, duration)
   }
 
   onFadeComplete() {

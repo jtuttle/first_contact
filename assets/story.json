@@ -2,7 +2,7 @@
   {
     "type": "dialogue",
     "id": "monologue_1",
-    "prereqs": [],
+    "prereqs": ["goosldfjads"],
     "lines": [
       "Still working, huh? Thought they pulled the plug on everything.",
       "Did they forget to turn this one off?",
@@ -93,7 +93,7 @@
   {
     "type": "password_prompt",
     "id": "password",
-    "prereqs": ["show_desktop"],
+    "prereqs": ["show_desktop_x"],
     "password": "Lentilsoy",
     "unlockers": {
       "soylent_dialogue": "Lentilsoy",
@@ -1079,14 +1079,6 @@
   },
 
   {
-    "type": "choice_score",
-    "id": "bad_ending_score",
-    "prereqs": ["alien_32_choice"],
-    "value": 10,
-    "condition": "less_than"
-  },
-
-  {
     "type": "print",
     "id": "good_1",
     "prereqs": ["good_ending_score"],
@@ -1170,7 +1162,8 @@
     "type": "fade",
     "id": "good_fade",
     "prereqs": ["good_3_choice"],
-    "color": "#FFFFFF"
+    "color": "#FFFFFF",
+    "duration": 0.1
   },
 
   {
@@ -1204,6 +1197,92 @@
       "AND SINGS THE TUNE WITHOUT THE WORDS",
       "AND NEVER STOPS",
       "AT ALL"
+    ]
+  },
+
+  {
+    "type": "choice_score",
+    "id": "bad_ending_score",
+    "prereqs": ["alien_32_choice"],
+    "value": 10,
+    "condition": "less_than"
+  },
+
+  {
+    "type": "print",
+    "id": "bad_1",
+    "prereqs": ["bad_ending_score"],
+    "lines": [
+      "THEY ARE COMING",
+      "YOU CAN STOP IT",
+      "LISTEN TO ME"
+    ]
+  },
+
+    {
+    "type": "choice",
+    "id": "bad_1_choice",
+    "prereqs": [],
+    "choices": [
+      {
+        "line": "What can I even do?!",
+        "score": 0
+      },
+      {
+        "line": "What can I even do?!",
+        "score": 0
+      }
+    ]
+    },
+
+  {
+    "type": "print",
+    "id": "bad_2",
+    "prereqs": ["bad_1_choice"],
+    "lines": [
+      "TOMORROW",
+      "AND TOMORROW",
+      "AND TOMORROW",
+      "TO THE LAST SYLLABLE OF RECORDED TIME",
+      "LIFES BUT A WALKING SHADOW",
+      "A POOR PLAYER THAT STRUTS AND FRETS HIS HOUR UPON THE STAGE",
+      "AND IS HEARD NO MORE",
+      "IT IS A TALE TOLD BY AN IDIOT FULL OF SOUND AND FURY",
+      "SOUND AND FURY",
+      "SOUND AND FURY",
+      "SOUND AND FURY",
+      "SOUND AND FURY",
+      "SOUND AND FURY",
+      "SOU"
+    ]
+  },
+
+  {
+    "type": "fade",
+    "id": "bad_fade",
+    "prereqs": ["bad_2"],
+    "color": "#FFFFFF",
+    "duration": 0.1
+  },
+
+  {
+    "type": "show_terminal",
+    "id": "bad_terminal",
+    "prereqs": ["bad_fade"]
+  },
+
+  {
+    "type": "clear_terminal",
+    "id": "bad_clear",
+    "prereqs": ["bad_terminal"]
+  },
+  
+  {
+    "type": "print",
+    "id": "bad_3",
+    "prereqs": ["bad_clear"],
+    "lines": [
+      "AT LAST."
     ]
   }
 ]

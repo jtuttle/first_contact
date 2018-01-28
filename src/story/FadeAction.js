@@ -5,6 +5,7 @@ export default class extends StoryAction {
     super(game, data)
 
     this.color = data.color
+    this.duration = data.duration
 
     this.gameState = this.game.state.states[this.game.state.current]
   }
@@ -12,7 +13,7 @@ export default class extends StoryAction {
   onEnable() {
     super.onEnable()
 
-    this.gameState.fade(this.color)
+    this.gameState.fade(this.color, this.duration)
     this.game.camera.onFadeComplete.addOnce(this.onFadeComplete, this);
   }
 

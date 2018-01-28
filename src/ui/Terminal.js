@@ -58,6 +58,12 @@ export default class extends Phaser.Group {
   addText(text) {
     this.charBuffer = this.charBuffer.concat(text.split(''))
   }
+
+  clearText() {
+    this.lines.forEach(function(line) {
+      line.text = ''
+    })
+  }
   
   shiftLines() {
     for(var i = 0; i < this.lines.length - 1; i++) {
