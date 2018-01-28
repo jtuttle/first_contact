@@ -12348,6 +12348,11 @@ var _class = function (_StoryAction) {
 
       this.removeClickListeners();
 
+      Object.keys(this.unlockers).forEach(function (unlocker) {
+        var node = this.storyEngine.getNode(unlocker);
+        node.onCompleteSignal.remove(this.onUnlockerNodeComplete, this);
+      }, this);
+
       _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "onComplete", this).call(this);
     }
   }, {
