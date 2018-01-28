@@ -4,7 +4,7 @@ import Phaser from 'phaser'
 import StoryEngine from '../story/StoryEngine'
 
 import Background from '../sprites/Background'
-import Soylent from '../sprites/Soylent'
+import Lentilsoy from '../sprites/Lentilsoy'
 import FishBowl from '../sprites/FishBowl'
 import Telephone from '../sprites/Telephone'
 import RedButton from '../sprites/RedButton'
@@ -28,13 +28,17 @@ export default class extends Phaser.State {
       y: this.world.centerY
     })
     this.game.add.existing(this.background)
+
+    this.pulse = this.game.add.sprite(this.world.centerX - 68, this.world.centerY + 80, 'pulse')
+    var pulse = this.pulse.animations.add("pulse")
+    this.pulse.animations.play("pulse", 20, true)
     
-    this.soylent = new Soylent({
+    this.lentilsoy = new Lentilsoy({
       game: this.game,
-      x: 100,
-      y: this.world.height - 100
+      x: 230,
+      y: this.world.height - 140
     })
-    this.game.add.existing(this.soylent)
+    this.game.add.existing(this.lentilsoy)
 
     this.fishBowl = new FishBowl({
       game: this.game,
@@ -56,13 +60,6 @@ export default class extends Phaser.State {
     })
     this.game.add.existing(this.telephone)
 
-    this.redButton = new RedButton({
-      game: this.game,
-      x: this.world.centerX + 25,
-      y: this.world.centerY + 170
-    })
-    this.game.add.existing(this.redButton)
-    
     this.desktop = new Desktop({
       game: this.game
     })

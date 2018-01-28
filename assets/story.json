@@ -12,23 +12,31 @@
   
   {
     "type": "click",
-    "id": "red_button_click",
+    "id": "pulse_click",
     "prereqs": [],
-    "target": "redButton"
+    "target": "pulse"
   },
 
   {
     "type": "set_visibility",
     "id": "show_desktop",
-    "prereqs": ["red_button_click"],
+    "prereqs": ["pulse_click"],
     "target": "desktop",
     "visible": "true"
+  },
+
+  {
+    "type": "set_visibility",
+    "id": "hide_pulse",
+    "prereqs": ["pulse_click"],
+    "target": "pulse",
+    "visible": "false"
   },
 
   { 
     "type": "sound",
     "id": "show_desktop_sound",
-    "prereqs": ["red_button_click"],
+    "prereqs": ["pulse_click"],
     "sfx": "beep"
   },
 
@@ -44,15 +52,15 @@
   
   {
     "type": "click",
-    "id": "soylent_click",
+    "id": "lentilsoy_click",
     "prereqs": ["show_desktop"],
-    "target": "soylent"
+    "target": "lentilsoy"
   },
 
   {
     "type": "dialogue",
-    "id": "soylent_dialogue",
-    "prereqs": ["soylent_click"],
+    "id": "lentilsoy_dialogue",
+    "prereqs": ["lentilsoy_click"],
     "lines": [
       "Ah, Lentilsoy. 'Be the best you’ve ever bean.'",
       "Pretty sure they fund the experiments here.",
@@ -103,7 +111,7 @@
     "prereqs": ["show_desktop"],
     "password": "Lentilsoy",
     "unlockers": {
-      "soylent_dialogue": "Lentilsoy",
+      "lentilsoy_dialogue": "Lentilsoy",
       "fish_bowl_dialogue": "One Fish Two Fish",
       "telephone_dialogue": "Smooth Operator"
     }

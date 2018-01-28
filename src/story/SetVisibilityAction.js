@@ -6,12 +6,14 @@ export default class extends StoryAction {
 
     var gameState = this.game.state.states[this.game.state.current]
     this.target = gameState[data.target]
+
+    this.visible = (this.data.visible == "true")
   }
 
   onEnable() {
     super.onEnable()
     
-    this.target.visible = true
+    this.target.visible = this.visible
 
     this.onComplete()
   }

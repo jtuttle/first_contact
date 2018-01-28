@@ -36,7 +36,7 @@ export default class extends Phaser.Group {
     this.settingIndex = (this.settingIndex + 1) % this.signalSettings.length
     this.text.text = this.signalSettings[this.settingIndex]
 
-    var currentSetting = this.signalSettings[this.currentSetting]
+    var currentSetting = this.signalSettings[this.settingIndex]
     this.onSettingChangeSignal.dispatch(currentSetting)
   }
 
