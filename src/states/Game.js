@@ -7,6 +7,7 @@ import Background from '../sprites/Background'
 import Soylent from '../sprites/Soylent'
 import FishBowl from '../sprites/FishBowl'
 import Telephone from '../sprites/Telephone'
+import RedButton from '../sprites/RedButton'
 
 import Desktop from '../ui/Desktop'
 
@@ -45,16 +46,20 @@ export default class extends Phaser.State {
     })
     this.game.add.existing(this.telephone)
 
-
+    this.redButton = new RedButton({
+      game: this.game,
+      x: this.world.centerX + 25,
+      y: this.world.centerY + 170
+    })
+    this.game.add.existing(this.redButton)
+    
     this.desktop = new Desktop({
       game: this.game
     })
-    this.desktop.x = 250
-    this.desktop.y = 100
+    this.desktop.x = this.game.world.centerX
+    this.desktop.y = this.game.world.centerY - 10
     this.game.add.existing(this.desktop)
-    
-
-    
+    this.desktop.visible = false
 
     this.storyEngine = new StoryEngine({
       game: this.game,

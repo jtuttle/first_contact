@@ -4,6 +4,7 @@ import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
 import PasswordPromptAction from './PasswordPromptAction'
 import PrintAction from './PrintAction'
+import SetVisibilityAction from './SetVisibilityAction'
 import ZoomAction from './ZoomAction'
 
 export default class {
@@ -25,14 +26,16 @@ export default class {
 
   enableNodes() {
     this.getNewEnabled().forEach(function(node) {
-      node.onEnable()
       node.onCompleteSignal.addOnce(this.onNodeComplete, this)
+      node.onEnable()
     }, this)
   }
 
   onNodeComplete(node) {
     this.completed[node.id] = true
 
+    console.log("enabling nodes")
+    
     this.enableNodes()
   }
 
@@ -90,6 +93,9 @@ export default class {
       break;
     case "print":
       return PrintAction
+      break;
+    case "set_visibility":
+      return SetVisibilityAction
       break;
     case "zoom":
       return ZoomAction
