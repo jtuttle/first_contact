@@ -10974,10 +10974,6 @@ var _Telephone = __webpack_require__(/*! ../sprites/Telephone */ 363);
 
 var _Telephone2 = _interopRequireDefault(_Telephone);
 
-var _RedButton = __webpack_require__(/*! ../sprites/RedButton */ 364);
-
-var _RedButton2 = _interopRequireDefault(_RedButton);
-
 var _WhiteSquare = __webpack_require__(/*! ../sprites/WhiteSquare */ 365);
 
 var _WhiteSquare2 = _interopRequireDefault(_WhiteSquare);
@@ -12627,7 +12623,6 @@ var _class = function (_StoryAction) {
       this.gameState.fishBowl.visible = false;
       this.gameState.fish.visible = false;
       this.gameState.telephone.visible = false;
-      this.gameState.redButton.visible = false;
 
       this.gameState.desktop.visible = true;
       this.gameState.desktop.terminalIcon.visible = false;
@@ -12868,57 +12863,7 @@ var _class = function (_Phaser$Sprite) {
 exports.default = _class;
 
 /***/ }),
-/* 364 */
-/*!**********************************!*\
-  !*** ./src/sprites/RedButton.js ***!
-  \**********************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _phaser = __webpack_require__(/*! phaser */ 9);
-
-var _phaser2 = _interopRequireDefault(_phaser);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$Sprite) {
-  _inherits(_class, _Phaser$Sprite);
-
-  function _class(_ref) {
-    var game = _ref.game,
-        x = _ref.x,
-        y = _ref.y;
-
-    _classCallCheck(this, _class);
-
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, "red_button"));
-
-    _this.scale.x = 0.1;
-    _this.scale.y = 0.1;
-    _this.anchor.setTo(0.5);
-    return _this;
-  }
-
-  return _class;
-}(_phaser2.default.Sprite);
-
-exports.default = _class;
-
-/***/ }),
+/* 364 */,
 /* 365 */
 /*!************************************!*\
   !*** ./src/sprites/WhiteSquare.js ***!

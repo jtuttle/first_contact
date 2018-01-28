@@ -16,7 +16,6 @@ export default class extends StoryAction {
     this.gameState.fishBowl.visible = false
     this.gameState.fish.visible = false
     this.gameState.telephone.visible = false
-    this.gameState.redButton.visible = false
     
     this.gameState.desktop.visible = true
     this.gameState.desktop.terminalIcon.visible = false

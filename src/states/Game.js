@@ -7,7 +7,6 @@ import Background from '../sprites/Background'
 import Lentilsoy from '../sprites/Lentilsoy'
 import FishBowl from '../sprites/FishBowl'
 import Telephone from '../sprites/Telephone'
-import RedButton from '../sprites/RedButton'
 import WhiteSquare from '../sprites/WhiteSquare'
 
 import Desktop from '../ui/Desktop'
