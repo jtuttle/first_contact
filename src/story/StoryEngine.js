@@ -33,8 +33,13 @@ export default class {
 
   enableNodes() {
     this.getNewEnabled().forEach(function(node) {
-      node.onCompleteSignal.addOnce(this.onNodeComplete, this)
-      node.onEnable()
+      // TODO: there's a bug where a node can get enabled twice, caused by the
+      // previous node completing immediately when it gets enabled. Don't have
+      // time to fix it properly now but this conditional prevents it.
+      if(!node.enabled) {
+        node.onCompleteSignal.addOnce(this.onNodeComplete, this)
+        node.onEnable()
+      }
     }, this)
   }
 

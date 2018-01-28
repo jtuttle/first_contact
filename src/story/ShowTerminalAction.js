@@ -12,7 +12,7 @@ export default class extends StoryAction {
 
     this.gameState.modal.visible = false
     this.gameState.background.visible = false
-    this.gameState.soylent.visible = false
+    this.gameState.lentilsoy.visible = false
     this.gameState.fishBowl.visible = false
     this.gameState.fish.visible = false
     this.gameState.telephone.visible = false

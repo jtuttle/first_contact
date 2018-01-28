@@ -10874,8 +10874,7 @@ var _class = function (_Phaser$State) {
       //
       this.load.image('background', 'assets/images/background.png');
 
-      this.load.image('soylent', 'assets/images/soylent.jpg');
-      this.load.spritesheet('fish', 'assets/images/fish.png', 200, 200);
+      this.load.image('lentilsoy', 'assets/images/lentilsoy.png');
       this.load.image('fish_bowl', 'assets/images/fish_bowl.png');
       this.load.image('telephone', 'assets/images/telephone.png');
 
@@ -10885,6 +10884,9 @@ var _class = function (_Phaser$State) {
       this.load.image('terminal_icon', 'assets/images/terminal_icon.png');
       this.load.image('signal_icon', 'assets/images/signal_icon.png');
       this.load.image('signal_dial', 'assets/images/dial.png');
+
+      this.load.spritesheet('fish', 'assets/images/fish.png', 200, 200);
+      this.load.spritesheet('pulse', 'assets/images/pulse.png', 181, 149);
 
       this.load.audio('beep', 'assets/sfx/PhoneDial_SingleButtonPush.ogg');
       this.load.audio('bad_ending', 'assets/sfx/Bad_Ending.ogg');
@@ -10960,9 +10962,9 @@ var _Background = __webpack_require__(/*! ../sprites/Background */ 360);
 
 var _Background2 = _interopRequireDefault(_Background);
 
-var _Soylent = __webpack_require__(/*! ../sprites/Soylent */ 361);
+var _Lentilsoy = __webpack_require__(/*! ../sprites/Lentilsoy */ 376);
 
-var _Soylent2 = _interopRequireDefault(_Soylent);
+var _Lentilsoy2 = _interopRequireDefault(_Lentilsoy);
 
 var _FishBowl = __webpack_require__(/*! ../sprites/FishBowl */ 362);
 
@@ -11023,12 +11025,16 @@ var _class = function (_Phaser$State) {
       });
       this.game.add.existing(this.background);
 
-      this.soylent = new _Soylent2.default({
+      this.pulse = this.game.add.sprite(this.world.centerX - 68, this.world.centerY + 80, 'pulse');
+      var pulse = this.pulse.animations.add("pulse");
+      this.pulse.animations.play("pulse", 20, true);
+
+      this.lentilsoy = new _Lentilsoy2.default({
         game: this.game,
-        x: 100,
-        y: this.world.height - 100
+        x: 230,
+        y: this.world.height - 140
       });
-      this.game.add.existing(this.soylent);
+      this.game.add.existing(this.lentilsoy);
 
       this.fishBowl = new _FishBowl2.default({
         game: this.game,
@@ -11049,13 +11055,6 @@ var _class = function (_Phaser$State) {
         y: this.world.height - 240
       });
       this.game.add.existing(this.telephone);
-
-      this.redButton = new _RedButton2.default({
-        game: this.game,
-        x: this.world.centerX + 25,
-        y: this.world.centerY + 170
-      });
-      this.game.add.existing(this.redButton);
 
       this.desktop = new _Desktop2.default({
         game: this.game
@@ -11221,8 +11220,13 @@ var _class = function () {
     key: 'enableNodes',
     value: function enableNodes() {
       this.getNewEnabled().forEach(function (node) {
-        node.onCompleteSignal.addOnce(this.onNodeComplete, this);
-        node.onEnable();
+        // TODO: there's a bug where a node can get enabled twice, caused by the
+        // previous node completing immediately when it gets enabled. Don't have
+        // time to fix it properly now but this conditional prevents it.
+        if (!node.enabled) {
+          node.onCompleteSignal.addOnce(this.onNodeComplete, this);
+          node.onEnable();
+        }
       }, this);
     }
   }, {
@@ -12536,15 +12540,17 @@ var _class = function (_StoryAction) {
 
     var gameState = _this.game.state.states[_this.game.state.current];
     _this.target = gameState[data.target];
+
+    _this.visible = _this.data.visible == "true";
     return _this;
   }
 
   _createClass(_class, [{
-    key: 'onEnable',
+    key: "onEnable",
     value: function onEnable() {
-      _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), 'onEnable', this).call(this);
+      _get(_class.prototype.__proto__ || Object.getPrototypeOf(_class.prototype), "onEnable", this).call(this);
 
-      this.target.visible = true;
+      this.target.visible = this.visible;
 
       this.onComplete();
     }
@@ -12609,7 +12615,7 @@ var _class = function (_StoryAction) {
 
       this.gameState.modal.visible = false;
       this.gameState.background.visible = false;
-      this.gameState.soylent.visible = false;
+      this.gameState.lentilsoy.visible = false;
       this.gameState.fishBowl.visible = false;
       this.gameState.fish.visible = false;
       this.gameState.telephone.visible = false;
@@ -12750,58 +12756,7 @@ var _class = function (_Phaser$Sprite) {
 exports.default = _class;
 
 /***/ }),
-/* 361 */
-/*!********************************!*\
-  !*** ./src/sprites/Soylent.js ***!
-  \********************************/
-/*! dynamic exports provided */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _phaser = __webpack_require__(/*! phaser */ 9);
-
-var _phaser2 = _interopRequireDefault(_phaser);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _class = function (_Phaser$Sprite) {
-  _inherits(_class, _Phaser$Sprite);
-
-  function _class(_ref) {
-    var game = _ref.game,
-        x = _ref.x,
-        y = _ref.y,
-        asset = _ref.asset;
-
-    _classCallCheck(this, _class);
-
-    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, "soylent"));
-
-    _this.scale.x = 0.3;
-    _this.scale.y = 0.3;
-    _this.anchor.setTo(0.5);
-    return _this;
-  }
-
-  return _class;
-}(_phaser2.default.Sprite);
-
-exports.default = _class;
-
-/***/ }),
+/* 361 */,
 /* 362 */
 /*!*********************************!*\
   !*** ./src/sprites/FishBowl.js ***!
@@ -13521,7 +13476,7 @@ var _class = function (_Phaser$Group) {
       this.settingIndex = (this.settingIndex + 1) % this.signalSettings.length;
       this.text.text = this.signalSettings[this.settingIndex];
 
-      var currentSetting = this.signalSettings[this.currentSetting];
+      var currentSetting = this.signalSettings[this.settingIndex];
       this.onSettingChangeSignal.dispatch(currentSetting);
     }
   }, {
@@ -13667,6 +13622,58 @@ var _class = function (_StoryAction) {
 
   return _class;
 }(_StoryAction3.default);
+
+exports.default = _class;
+
+/***/ }),
+/* 376 */
+/*!**********************************!*\
+  !*** ./src/sprites/Lentilsoy.js ***!
+  \**********************************/
+/*! dynamic exports provided */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _phaser = __webpack_require__(/*! phaser */ 9);
+
+var _phaser2 = _interopRequireDefault(_phaser);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _class = function (_Phaser$Sprite) {
+  _inherits(_class, _Phaser$Sprite);
+
+  function _class(_ref) {
+    var game = _ref.game,
+        x = _ref.x,
+        y = _ref.y,
+        asset = _ref.asset;
+
+    _classCallCheck(this, _class);
+
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, game, x, y, "lentilsoy"));
+
+    _this.scale.x = 1;
+    _this.scale.y = 1;
+    _this.anchor.setTo(0.5);
+    return _this;
+  }
+
+  return _class;
+}(_phaser2.default.Sprite);
 
 exports.default = _class;
 

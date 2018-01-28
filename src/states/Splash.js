@@ -16,8 +16,7 @@ export default class extends Phaser.State {
     //
     this.load.image('background', 'assets/images/background.png')
 
-    this.load.image('soylent', 'assets/images/soylent.jpg')
-    this.load.spritesheet('fish', 'assets/images/fish.png', 200, 200)
+    this.load.image('lentilsoy', 'assets/images/lentilsoy.png')
     this.load.image('fish_bowl', 'assets/images/fish_bowl.png')
     this.load.image('telephone', 'assets/images/telephone.png')
 
@@ -28,6 +27,10 @@ export default class extends Phaser.State {
     this.load.image('signal_icon', 'assets/images/signal_icon.png')
     this.load.image('signal_dial', 'assets/images/dial.png')
 
+    
+    this.load.spritesheet('fish', 'assets/images/fish.png', 200, 200)
+    this.load.spritesheet('pulse', 'assets/images/pulse.png', 181, 149)
+    
 
     this.load.audio('beep', 'assets/sfx/PhoneDial_SingleButtonPush.ogg')
     this.load.audio('bad_ending', 'assets/sfx/Bad_Ending.ogg')
