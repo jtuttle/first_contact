@@ -20,8 +20,8 @@ export default class extends Phaser.Group {
     
     this.terminalIcon = new TerminalIcon({
       game: game,
-      x: -250,
-      y: 100
+      x: -210,
+      y: 50
     })
     this.add(this.terminalIcon)
     this.terminalIcon.inputEnabled = true
@@ -30,8 +30,8 @@ export default class extends Phaser.Group {
 
     this.signalIcon = new SignalIcon({
       game: game,
-      x: -150,
-      y: 100
+      x: -130,
+      y: 50
     })
     this.add(this.signalIcon)
     this.signalIcon.inputEnabled = true
