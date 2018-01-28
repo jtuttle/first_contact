@@ -13489,7 +13489,7 @@ var _class = function (_Phaser$Group) {
 
     _this.signalDial = new _SignalDial2.default({
       game: _this.game,
-      x: 300,
+      x: 200,
       y: 130
     });
     _this.add(_this.signalDial);
@@ -13497,8 +13497,17 @@ var _class = function (_Phaser$Group) {
     _this.signalDial.input.useHandCursor = true;
     _this.signalDial.events.onInputDown.add(_this.onSignalDialClick, _this);
 
+    _this.text = game.add.text(300, 100, '', {
+      font: '60px Courier New',
+      fill: '#00FFEA',
+      smoothed: false
+    }, _this);
+    _this.add(_this.text);
+
     _this.signalSettings = ["12.3", "45.6", "78.9", "99.8"];
-    _this.currentSetting = 0;
+    _this.settingIndex = 0;
+
+    _this.text.text = _this.signalSettings[_this.settingIndex];
 
     _this.onSettingChangeSignal = new _phaser2.default.Signal();
     return _this;
@@ -13509,9 +13518,10 @@ var _class = function (_Phaser$Group) {
     value: function onSignalDialClick() {
       this.signalDial.rotation = (this.signalDial.rotation + 20) % 360;
 
-      this.currentSetting = (this.currentSetting + 1) % this.signalSettings.length;
-      var currentSetting = this.signalSettings[this.currentSetting];
+      this.settingIndex = (this.settingIndex + 1) % this.signalSettings.length;
+      this.text.text = this.signalSettings[this.settingIndex];
 
+      var currentSetting = this.signalSettings[this.currentSetting];
       this.onSettingChangeSignal.dispatch(currentSetting);
     }
   }, {

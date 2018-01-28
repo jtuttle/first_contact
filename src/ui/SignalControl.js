@@ -7,7 +7,7 @@ export default class extends Phaser.Group {
 
     this.signalDial = new SignalDial({
       game: this.game,
-      x: 300,
+      x: 200,
       y: 130
     })
     this.add(this.signalDial)
@@ -15,8 +15,17 @@ export default class extends Phaser.Group {
     this.signalDial.input.useHandCursor = true
     this.signalDial.events.onInputDown.add(this.onSignalDialClick, this)
 
+    this.text = game.add.text(300, 100, '', {
+      font: '60px Courier New',
+      fill: '#00FFEA',
+      smoothed: false
+    }, this)
+    this.add(this.text)
+
     this.signalSettings = ["12.3", "45.6", "78.9", "99.8"]
-    this.currentSetting = 0
+    this.settingIndex = 0
+
+    this.text.text = this.signalSettings[this.settingIndex]
     
     this.onSettingChangeSignal = new Phaser.Signal()
   }
@@ -24,9 +33,10 @@ export default class extends Phaser.Group {
   onSignalDialClick() {
     this.signalDial.rotation = (this.signalDial.rotation + 20) % 360
     
-    this.currentSetting = (this.currentSetting + 1) % this.signalSettings.length
-    var currentSetting = this.signalSettings[this.currentSetting]
+    this.settingIndex = (this.settingIndex + 1) % this.signalSettings.length
+    this.text.text = this.signalSettings[this.settingIndex]
 
+    var currentSetting = this.signalSettings[this.currentSetting]
     this.onSettingChangeSignal.dispatch(currentSetting)
   }
 
