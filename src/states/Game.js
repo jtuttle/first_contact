@@ -41,6 +41,7 @@ export default class extends Phaser.State {
       x: 0,
       y: 0
     })
+    this.fishBowl.y = 260
     this.game.add.existing(this.fishBowl)
 
 
