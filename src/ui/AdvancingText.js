@@ -6,7 +6,7 @@ export default class extends Phaser.Group {
 
     this.text = game.add.text(0, y, '', {
       font: '20px Arial',
-      fill: '#77BFA3',
+      fill: '#FFFFFF',
       smoothed: false
     }, this)
     this.text.lineSpacing = -5

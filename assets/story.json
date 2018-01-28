@@ -67,8 +67,8 @@
     "id": "fish_bowl_dialogue",
     "prereqs": ["fish_bowl_click"],
     "lines": [
-      "One fish, two fish",
-      "Red fish, blue fish"
+      "One fish, two fish…",
+      "Wait, there’s only one."
     ]
   },
 
@@ -84,9 +84,9 @@
     "id": "telephone_dialogue",
     "prereqs": ["telephone_click"],
     "lines": [
-      "Ring, ring, ring, ring, ring, ring, ring, ring",
-      ".....bananaphone",
-      "doot doot da-doot doo-doot"
+      "… It’s not like I can call someone and ask for the password.",
+      "Hello, operator?",
+      "Yeah, can I have the very secret password for the very secret government computer?"
     ]
   },
 
@@ -97,8 +97,8 @@
     "password": "Lentilsoy",
     "unlockers": {
       "soylent_dialogue": "Lentilsoy",
-      "fish_bowl_dialogue": "RedFishBlueFish",
-      "telephone_dialogue": "BananaPhone"
+      "fish_bowl_dialogue": "One Fish Two Fish",
+      "telephone_dialogue": "Smooth Operator"
     }
   },
 
@@ -1066,6 +1066,102 @@
       {
         "line": "How could I trust you?",
         "score": -100
+      }
+    ]
+  },
+
+  {
+    "type": "choice_score",
+    "id": "good_ending",
+    "prereqs": ["alien_32_choice"],
+    "value": 10,
+    "condition": "greater_than_or_equal"
+  },
+
+  {
+    "type": "choice_score",
+    "id": "bad_ending",
+    "prereqs": ["alien_32_choice"],
+    "value": 10,
+    "condition": "less_than"
+  },
+
+  {
+    "type": "print",
+    "id": "good_1",
+    "prereqs": ["good_ending"],
+    "lines": [
+      "THANK YOU",
+      "THANK YOU . . ."
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "good_1_choice",
+    "prereqs": ["good_1"],
+    "choices": [
+      {
+        "line": "How can I save anyone?",
+        "score": 0
+      },
+      {
+        "line": "What do you want me to do?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "good_2",
+    "prereqs": ["good_1"],
+    "lines": [
+      "TRUST",
+      "TRUST ME",
+      "LET ME IN"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "good_2_choice",
+    "prereqs": ["good_2"],
+    "choices": [
+      {
+        "line": "What?",
+        "score": 0
+      },
+      {
+        "line": "What?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "good_3",
+    "prereqs": ["good_2"],
+    "lines": [
+      "YOU",
+      "YOUR MIND",
+      "LET ME IN"
+    ]
+  },
+
+  {
+    "type": "choice",
+    "id": "good_3_choice",
+    "prereqs": ["good_3"],
+    "choices": [
+      {
+        "line": "Fine. I trust you.",
+        "score": 0
+      },
+      {
+        "line": "What? No way!",
+        "score": 0
       }
     ]
   }

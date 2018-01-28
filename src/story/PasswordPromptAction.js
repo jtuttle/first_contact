@@ -8,9 +8,9 @@ export default class extends StoryAction {
 
     this.choices = [
 //      "Lentilsoy",
-      "abc123",
-      "boop",
-      "yeah"
+      "I<3Aliens",
+      "Alienluvr69",
+      "AbductMePlz"
     ]
 
     this.unlockers = data.unlockers
