@@ -20,12 +20,49 @@
   },
 
   {
+    "type": "click",
+    "id": "fish_bowl_click",
+    "prereqs": [],
+    "target": "fishBowl"
+  },
+
+  {
+    "type": "dialogue",
+    "id": "fish_bowl_dialogue",
+    "prereqs": ["fish_bowl_click"],
+    "lines": [
+      "One fish, two fish",
+      "Red fish, blue fish"
+    ]
+  },
+
+  {
+    "type": "click",
+    "id": "telephone_click",
+    "prereqs": [],
+    "target": "telephone"
+  },
+
+  {
+    "type": "dialogue",
+    "id": "telephone_dialogue",
+    "prereqs": ["telephone_click"],
+    "lines": [
+      "Ring, ring, ring, ring, ring, ring, ring, ring",
+      ".....bananaphone",
+      "doot doot da-doot doo-doot"
+    ]
+  },
+
+  {
     "type": "password_prompt",
     "id": "password",
     "prereqs": [],
     "password": "Lentilsoy",
     "unlockers": {
-      "soylent_dialogue": "Lentilsoy"
+      "soylent_dialogue": "Lentilsoy",
+      "fish_bowl_dialogue": "RedFishBlueFish",
+      "telephone_dialogue": "BananaPhone"
     }
   },
   
