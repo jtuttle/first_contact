@@ -1,8 +1,9 @@
 [
   {
-    "type": "music_toggle",
+    "type": "sound_toggle",
     "id": "music_on",
     "prereqs": [],
+    "sound": "music",
     "on": "true"
   },
   
@@ -161,7 +162,7 @@
         "score": 1
       },
       {
-        "line": "Who's Asking?",
+        "line": "Who's asking?",
         "score": -1
       }
     ]
@@ -955,10 +956,11 @@
   },
 
   { 
-    "type": "sound",
-    "id": "alien_25_sound",
+    "type": "sound_toggle",
+    "id": "alien_25_sound_start",
     "prereqs": ["alien_25"],
-    "sfx": "corrupted_stream"
+    "sound": "corrupted_stream",
+    "on": "true"
   },
 
   {
@@ -1008,10 +1010,10 @@
     "id": "alien_27",
     "prereqs": ["alien_26_choice"],
     "lines": [
-	"THE NOISE",
-	"IS YOU HUMAN",
-	"IN YOU",
-	"IN YOUR MIND"
+      "THE NOISE",
+      "IS YOU HUMAN",
+      "IN YOU",
+      "IN YOUR MIND"
     ]
   },
 
@@ -1045,6 +1047,14 @@
     ]
   },
 
+  { 
+    "type": "sound_toggle",
+    "id": "alien_25_sound_stop",
+    "prereqs": ["alien_28_1"],
+    "sound": "corrupted_stream",
+    "on": "false"
+  },
+
   {
     "type": "wait",
     "id": "alien_28_1_wait",
@@ -1058,7 +1068,7 @@
     "prereqs": ["alien_28_1_wait"],
     "lines": [
       "HUMAN",
-      "ARE YOU HERE"
+      "ARE YOU THERE"
     ]
   },
 
@@ -1303,9 +1313,10 @@
   },
 
   {
-    "type": "music_toggle",
+    "type": "sound_toggle",
     "id": "good_music_off",
     "prereqs": ["good_3_choice"],
+    "sound": "music",
     "on": "false"
   },
   
@@ -1429,9 +1440,10 @@
   },
 
   {
-    "type": "music_toggle",
+    "type": "sound_toggle",
     "id": "bad_music_off",
     "prereqs": ["bad_2"],
+    "sound": "music",
     "on": "false"
   },
 

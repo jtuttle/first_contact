@@ -7,12 +7,12 @@ import CorruptedStreamAction from './CorruptedStreamAction'
 import DialogueAction from './DialogueAction'
 import FadeAction from './FadeAction'
 import GoodEndingAction from './GoodEndingAction'
-import MusicToggleAction from './MusicToggleAction'
 import PasswordPromptAction from './PasswordPromptAction'
 import PrintAction from './PrintAction'
 import SetVisibilityAction from './SetVisibilityAction'
 import ShowTerminalAction from './ShowTerminalAction'
 import SoundAction from './SoundAction'
+import SoundToggleAction from './SoundToggleAction'
 import WaitAction from './WaitAction'
 
 export default class {
@@ -116,9 +116,6 @@ export default class {
     case "good_ending":
       return GoodEndingAction
       break;
-    case "music_toggle":
-      return MusicToggleAction
-      break;
     case "password_prompt":
       return PasswordPromptAction
       break;
@@ -133,6 +130,9 @@ export default class {
       break;
     case "sound":
       return SoundAction
+      break;
+    case "sound_toggle":
+      return SoundToggleAction
       break;
     case "wait":
       return WaitAction
