@@ -101,6 +101,16 @@
       "telephone_dialogue": "BananaPhone"
     }
   },
+
+  {
+    "type": "dialogue",
+    "id": "monologue_3",
+    "prereqs": ["password"],
+    "lines": [
+      "Ohoho, this is… whoa.",
+      "Hackerman."
+    ]
+  },
   
   {
     "type": "corrupted_stream",
@@ -123,8 +133,14 @@
     "id": "alien_1_choice",
     "prereqs": ["alien_1"],
     "choices": [
-      "Hi?",
-      "Who's Asking?"
+      {
+        "line": "Hi?",
+        "score": 1
+      },
+      {
+        "line": "Who's Asking?",
+        "score": -1
+      }
     ]
   },
 
@@ -145,8 +161,14 @@
     "id": "alien_2_choice",
     "prereqs": ["alien_2"],
     "choices": [
-      "Is this a bot?",
-      "Is this a prank?"
+      {
+        "line": "Is this a bot?",
+        "score": 0
+      },
+      {
+        "line": "Is this a prank?",
+        "score": 0
+      }
     ]
   },
 
@@ -179,8 +201,14 @@
     "id": "alien_3_choice",
     "prereqs": ["alien_3"],
     "choices": [
-      "That’s a pretty long name.",
-      "Are you even reading my messages?"
+      {
+        "line": "Is that your full name?",
+        "score": 0
+      },
+      {
+        "line": "Are you even reading my messages?",
+        "score": -1
+      }
     ]
   },
 
@@ -218,8 +246,14 @@
     "id": "alien_4_choice",
     "prereqs": ["alien_4"],
     "choices": [
-      "Don’t be a smartass.",
-      "Who the hell are you?"
+      {
+        "line": "Don’t be a smartass.",
+        "score": 0
+      },
+      {
+        "line": "Who the hell are you?",
+        "score": 0
+      }
     ]
   },
 
@@ -237,8 +271,14 @@
     "id": "alien_5_choice",
     "prereqs": ["alien_5"],
     "choices": [
-      "This is a government computer, you know.",
-      "If you’re a hacker, you’re really bad at it."
+      {
+        "line": "This is a government computer, you know.",
+        "score": 0
+      },
+      {
+        "line": "If you're a hacker, you’re really bad at it.",
+        "score": 0
+      }
     ]
   },
 
@@ -258,8 +298,14 @@
     "id": "alien_6_choice",
     "prereqs": ["alien_6"],
     "choices": [
-      "I’m literally just a janitor.",
-      "What do you wanna know about?"
+      {
+        "line": "I'm literally just a janitor.",
+        "score": 0
+      },
+      {
+        "line": "What do you wanna know about?",
+        "score": 2
+      }
     ]
   },
 
@@ -282,8 +328,14 @@
     "id": "alien_7_choice",
     "prereqs": ["alien_7"],
     "choices": [
-      "Sorry. All the scientists are gone. Place’s getting closed down.",
-      "I know the science of cleaning toilets?"
+      {
+        "line": "Sorry. All the scientists are gone. Place’s getting closed down.",
+        "score": 0
+      },
+      {
+        "line": "I know the science of cleaning toilets?",
+        "score": 0
+      }
     ]
   },
 
@@ -305,8 +357,229 @@
     "id": "alien_8_choice",
     "prereqs": ["alien_8"],
     "choices": [
-      "Did you seriously hack into a federal computer just to chat?",
-      "You’re lonely? Yeah… I get that."
+      {
+        "line": "Did you seriously hack into a federal computer just to chat?",
+        "score": -1
+      },
+      {
+        "line": "You’re lonely? Yeah… I get that.",
+        "score": 3
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_9",
+    "prereqs": ["alien_8_choice"],
+    "lines": [
+      "YOU",
+      "JANI",
+      "J",
+      "JANITOR?"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_9_choice",
+    "prereqs": ["alien_9"],
+    "choices": [
+      {
+        "line": "Yes! Me janitor.",
+        "score": 2
+      },
+      {
+        "line": "You’re almost making sense.",
+        "score": -1
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_10",
+    "prereqs": ["alien_9_choice"],
+    "lines": [
+      "JAN",
+      "ITOR",
+      "JANITOR",
+      "NOT SCIENTIST"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_10_choice",
+    "prereqs": ["alien_10"],
+    "choices": [
+      {
+        "line": "Sorry to disappoint you.",
+        "score": -1
+      },
+      {
+        "line": "Yep. Boring, right?",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_11",
+    "prereqs": ["alien_10_choice"],
+    "lines": [
+      "SUCCESS IS COUNTED SWEETEST",
+      "BY THOSE WHO NEER SUCCEED",
+      "SCIENTIST",
+      "NEVER CONTACT",
+      "BUT YOU",
+      "YOU HEAR ME"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_11_choice",
+    "prereqs": ["alien_11"],
+    "choices": [
+      {
+        "line": "I just started goofing around with the computer. I have no idea.",
+        "score": 0
+      },
+      {
+        "line": "Because I’m snooping where I shouldn’t be.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_12",
+    "prereqs": ["alien_11_choice"],
+    "lines": [
+      "FORTUNE FAVORS THE BRAVE",
+      "WHAT IS",
+      "SQUARE"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_12_choice",
+    "prereqs": ["alien_12"],
+    "choices": [
+      {
+        "line": "Uh… sorry?",
+        "score": 0
+      },
+      {
+        "line": "A lot of things are square around here.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_13",
+    "prereqs": ["alien_12_choice"],
+    "lines": [
+      "MOVING THINGS",
+      "IN SQUARE"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_13_choice",
+    "prereqs": ["alien_13"],
+    "choices": [
+      {
+        "line": "Oh, you mean the fake fish tank?",
+        "score": 0
+      },
+      {
+        "line": "They’re not real fish, you know. Just holograms.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_14",
+    "prereqs": ["alien_13_choice"],
+    "lines": [
+      "FEED ME SEYMOUR",
+      "FEED ME ALL NIGHT LONG"
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_14_choice",
+    "prereqs": ["alien_14"],
+    "choices": [
+      {
+        "line": "What? they’re not real. They don’t eat.",
+        "score": 0
+      },
+      {
+        "line": "You can’t feed a hologram.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_15",
+    "prereqs": ["alien_14_choice"],
+    "lines": [
+      ":-("
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_15_choice",
+    "prereqs": ["alien_15"],
+    "choices": [
+      {
+        "line": "Don’t look at me like that.",
+        "score": 0
+      },
+      {
+        "line": "Fish fake. Food real. It’s not rocket surgery.",
+        "score": 0
+      }
+    ]
+  },
+
+  {
+    "type": "print",
+    "id": "alien_16",
+    "prereqs": ["alien_15_choice"],
+    "lines": [
+      ":-((((((((((((((("
+    ]
+  },
+  
+  {
+    "type": "choice",
+    "id": "alien_16_choice",
+    "prereqs": ["alien_16"],
+    "choices": [
+      {
+        "line": "Alright, fine. Watch this…",
+        "score": 5
+      },
+      {
+        "line": "I’m not feeding a hologram.",
+        "score": -5
+      }
     ]
   }
 ]
