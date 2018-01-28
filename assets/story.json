@@ -426,17 +426,47 @@
 
   {
     "type": "print",
-    "id": "alien_11",
+    "id": "alien_11_1",
     "prereqs": ["alien_10_choice"],
     "lines": [
       "SUCCESS IS COUNTED SWEETEST",
-      "BY THOSE WHO NEER SUCCEED",
-      "SCIENTIST",
-      "NEVER CONTACT",
-      "BUT YOU",
-      "YOU HEAR ME"
+      "BY THOSE WHO NEER SUCCEED"
     ]
   },
+
+  {
+    "type": "wait",
+    "id": "alien_11_1_wait",
+    "prereqs": ["alien_11_1"],
+    "duration": 1
+  },
+
+  {
+    "type": "print",
+    "id": "alien_11_2",
+    "prereqs": ["alien_11_1_wait"],
+    "lines": [
+      "SCIENTIST",
+      "NEVER CONTACT",
+      "BUT YOU"
+    ]
+  },
+
+  {
+    "type": "wait",
+    "id": "alien_11_2_wait",
+    "prereqs": ["alien_11_2"],
+    "duration": 1
+  },
+
+  {
+    "type": "print",
+    "id": "alien_11",
+    "prereqs": ["alien_11_2_wait"],
+    "lines": [
+      "YOU HEAR ME"
+    ]
+  },  
   
   {
     "type": "choice",
@@ -456,10 +486,25 @@
 
   {
     "type": "print",
-    "id": "alien_12",
+    "id": "alien_12_1",
     "prereqs": ["alien_11_choice"],
     "lines": [
-      "FORTUNE FAVORS THE BRAVE",
+      "FORTUNE FAVORS THE BRAVE"
+    ]
+  },
+
+  {
+    "type": "wait",
+    "id": "alien_12_1_wait",
+    "prereqs": ["alien_12_1"],
+    "duration": 2
+  },
+
+  {
+    "type": "print",
+    "id": "alien_12_2",
+    "prereqs": ["alien_12_1_wait"],
+    "lines": [
       "WHAT IS",
       "SQUARE"
     ]
@@ -468,7 +513,7 @@
   {
     "type": "choice",
     "id": "alien_12_choice",
-    "prereqs": ["alien_12"],
+    "prereqs": ["alien_12_2"],
     "choices": [
       {
         "line": "Uh… sorry?",
@@ -486,7 +531,7 @@
     "id": "alien_13",
     "prereqs": ["alien_12_choice"],
     "lines": [
-      "MOVING THINGS",
+      "MOVING THING",
       "IN SQUARE"
     ]
   },
@@ -501,7 +546,7 @@
         "score": 0
       },
       {
-        "line": "They’re not real fish, you know. Just holograms.",
+        "line": "It's not a real fish, you know. Just a hologram.",
         "score": 0
       }
     ]
@@ -523,7 +568,7 @@
     "prereqs": ["alien_14"],
     "choices": [
       {
-        "line": "What? they’re not real. They don’t eat.",
+        "line": "What? it's not real. It doesn’t eat.",
         "score": 0
       },
       {
@@ -593,11 +638,18 @@
       "I SEE"
     ]
   },
+
+  {
+    "type": "wait",
+    "id": "alien_16_wait",
+    "prereqs": ["alien_16_branch"],
+    "duration": 1
+  },
   
   {
     "type": "print",
     "id": "alien_17",
-    "prereqs": ["alien_16_branch"],
+    "prereqs": ["alien_16_wait"],
     "lines": [
       "WHERE ARE YOU"
     ]
@@ -645,11 +697,33 @@
   },
 
   {
-    "type": "print",
-    "id": "alien_19",
+    "type": "wait",
+    "id": "alien_18_wait",
     "prereqs": ["alien_18_choice"],
+    "duration": 1
+  },
+  
+  {
+    "type": "print",
+    "id": "alien_19_1",
+    "prereqs": ["alien_18_wait"],
     "lines": [
-      "HOME IS WHERE THE HEART IS",
+      "HOME IS WHERE THE HEART IS"
+    ]
+  },
+
+  {
+    "type": "wait",
+    "id": "alien_19_wait",
+    "prereqs": ["alien_19_1"],
+    "duration": 1
+  },
+  
+  {
+    "type": "print",
+    "id": "alien_19_2",
+    "prereqs": ["alien_19_wait"],
+    "lines": [
       "THERE IS A PLACE WHERE THE SIDEWALK ENDS",
       "AND BEFORE THE STREET BEGINS",
       "AND THERE THE GRASS GROWS SOFT AND WHITE",
@@ -662,7 +736,7 @@
   {
     "type": "choice",
     "id": "alien_19_choice",
-    "prereqs": ["alien_19"],
+    "prereqs": ["alien_19_2"],
     "choices": [
       {
         "line": "Nice. Close to the Equator, maybe?",
@@ -778,11 +852,26 @@
 
   {
     "type": "print",
-    "id": "alien_23",
+    "id": "alien_23_1",
     "prereqs": ["alien_22_choice"],
     "lines": [
       "I COULD",
-      "KILL THOSE YOU DISLIKE",
+      "KILL THOSE YOU DISLIKE"
+    ]
+  },
+
+  {
+    "type": "wait",
+    "id": "alien_23_wait",
+    "prereqs": ["alien_23_1"],
+    "duration": 4
+  },
+  
+  {
+    "type": "print",
+    "id": "alien_23_2",
+    "prereqs": ["alien_23_wait"],
+    "lines": [
       "JOKE"
     ]
   },
@@ -790,7 +879,7 @@
   {
     "type": "choice",
     "id": "alien_23_choice",
-    "prereqs": ["alien_23"],
+    "prereqs": ["alien_23_2"],
     "choices": [
       {
         "line": "That’s not funny.",
@@ -1106,11 +1195,26 @@
 
   {
     "type": "print",
-    "id": "good_2",
-    "prereqs": ["good_1"],
+    "id": "good_2_1",
+    "prereqs": ["good_1_choice"],
     "lines": [
       "TRUST",
-      "TRUST ME",
+      "TRUST ME"
+    ]
+  },
+
+  {
+    "type": "wait",
+    "id": "good_2_wait",
+    "prereqs": ["good_2_1"],
+    "duration": 3
+  },
+  
+  {
+    "type": "print",
+    "id": "good_2_2",
+    "prereqs": ["good_2_wait"],
+    "lines": [
       "LET ME IN"
     ]
   },
@@ -1118,7 +1222,7 @@
   {
     "type": "choice",
     "id": "good_2_choice",
-    "prereqs": ["good_2"],
+    "prereqs": ["good_2_2"],
     "choices": [
       {
         "line": "What?",
@@ -1134,7 +1238,7 @@
   {
     "type": "print",
     "id": "good_3",
-    "prereqs": ["good_2"],
+    "prereqs": ["good_2_choice"],
     "lines": [
       "YOU",
       "YOUR MIND",
